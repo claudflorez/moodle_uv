@@ -24,5 +24,9 @@
 
 $ADMIN->add('reports', new admin_externalpage('report_categoryreports',
         get_string('pluginname', 'report_categoryreports'),
+<<<<<<< HEAD
+        new moodle_url('/report/categoryreports/view/index.php')));
+=======
         new moodle_url('/report/categoryreports/view/index.php')));
 
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea

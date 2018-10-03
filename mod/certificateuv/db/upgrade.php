@@ -301,10 +301,17 @@ function xmldb_certificate_upgrade($oldversion=0) {
         $DB->set_field('certificate', 'orientation', 'L', array('certificatetype' => 'unicode_landscape'));
 
         // If the certificate type does not match any of the orientations in the above then set to 'L'
+<<<<<<< HEAD
+        /*$sql = "UPDATE {certificate}
+                SET orientation = 'L'
+                WHERE orientation = ''";
+        $DB->execute($sql);*/
+=======
         $sql = "UPDATE {certificate}
                 SET orientation = 'L'
                 WHERE orientation = ''";
         $DB->execute($sql);
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 
         // Update all the certificate types
         $DB->set_field('certificate', 'certificatetype', 'A4_non_embedded', array('certificatetype' => 'landscape'));

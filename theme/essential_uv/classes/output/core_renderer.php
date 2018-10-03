@@ -380,6 +380,16 @@ class core_renderer extends \core_renderer {
             /*Mensage personalizado para invitar a eliminar cursos */
             global $CFG, $USER;
             $courses = enrol_get_all_users_courses($USER->id, true); 
+<<<<<<< HEAD
+            if(count((array)$courses) > 0){
+                $msg_delete_course = "Si usted desea eliminar alguno de sus cursos, por favor dirijase a la sección ";
+                $url_delete_courses = $CFG->wwwroot."/course/delete_course_old";
+                $content .= '<div class="alert alert-warning">';
+                $content .= '<h3>'.$msg_delete_course;
+                $content .= '<a style="color:#D51B23;" href='.$url_delete_courses.'>Eliminar cursos</a>';
+                $content .= '</h3></div>';
+            }
+=======
             // if(count((array)$courses) > 0){
             //     $msg_delete_course = "Si usted desea eliminar alguno de sus cursos, por favor dirijase a la sección ";
             //     $url_delete_courses = $CFG->wwwroot."/course/delete_course_old";
@@ -388,6 +398,7 @@ class core_renderer extends \core_renderer {
             //     $content .= '<a style="color:#D51B23;" href='.$url_delete_courses.'>Eliminar cursos</a>';
             //     $content .= '</h3></div>';
             // }
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
             /*Campo de búsqueda*/
             if (\theme_essential_uv\toolbox::course_content_search()) {
                 $content .= '<div class="courseitemsearch">';
