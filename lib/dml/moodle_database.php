@@ -477,7 +477,7 @@ abstract class moodle_database {
         $sql    = $this->last_sql;
         $params = $this->last_params;
         $error  = $this->get_last_error();
-
+        
         $this->query_log($error);
 
         switch ($type) {
