@@ -53,6 +53,7 @@ if (empty($PAGE->layout_options['nofooter'])) { ?>
                 <?php
 }
 ?>
+<<<<<<< HEAD
 <?php 
     /*if ($hasfootnote) {
         echo '<div class="footnote span12">'.$hasfootnote.'</div>';
@@ -65,6 +66,11 @@ if (empty($PAGE->layout_options['nofooter'])) { ?>
     $hasfootnote .= '<td style="vertical-align: top;"><p style="line-height: 1.4;">Dirección de Nuevas Tecnologías y Educación Virtual-DINTEV<br />campusvirtual@correounivalle.edu.co<br />Teléfonos: +57 2 3182649 ó 3212100 Ext. 2649<br />Edificio E18 (317) - Cree Ciudadela Universitaria Meléndez<br />Universidad del Valle<br />Cali-Colombia</p></td>';
     $hasfootnote .= '</tr><tr><td></td><td></td><td></td></tr></tbody></table>';
     echo $hasfootnote;
+=======
+                <?php if ($hasfootnote) {
+                    echo '<div class="footnote span12">'.$hasfootnote.'</div>';
+}
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 ?>
             </div>
             <div class="footerperformance row-fluid">
