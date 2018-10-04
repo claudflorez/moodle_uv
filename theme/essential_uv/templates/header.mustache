@@ -1,0 +1,74 @@
+{{!
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+}}
+{{!
+    @template theme_essential_uv/header
+
+    Page header template
+
+    Example context (json): {}
+}}
+<header role="banner">
+    {{^oldnavbar}}
+        {{>theme_essential_uv/navbar}}
+    {{/oldnavbar}}
+
+    <div id="page-header" class="clearfix {{#oldnavbar}}oldnavbar{{/oldnavbar}} logo">
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <!-- HEADER: LOGO AREA -->
+                <div class="pull-left logo-container">
+                    <a class="logo" href="{{{path_site}}}">
+                        <img src="{{{path_logo}}}" class="img-responsive" />
+                    </a>
+                </div>
+                <a class="btn btn-icon collapsed" data-toggle="collapse" data-target="#essentialicons">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+
+                <div id='essentialicons' class="collapse pull-right">
+
+                    <div class="pull-right" id="socialnetworks">
+                        <p class="socialheading"> {{{ social_networks_string }}} </p>
+                        <ul class="socials unstyled">
+                            {{{ google_plus_icon_path }}}
+                            {{{ twitter_icon_path }}}
+                            {{{ facebook_icon_path }}}
+                            {{{ linkedin_icon_path }}}
+                            {{{ youtube_icon_path }}}
+                            {{{ flickr_icon_path }}}
+                            {{{ pinterest_icon_path }}}
+                            {{{ instagram_icon_path }}}
+                            {{{ vk_icon_path }}}
+                            {{{ skype_icon_path }}}
+                            {{{ website_icon_path }}}
+                        </ul>
+
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{#oldnavbar}}
+        {{>theme_essential_uv/navbar}}
+    {{/oldnavbar}}
+
+    
+</header>

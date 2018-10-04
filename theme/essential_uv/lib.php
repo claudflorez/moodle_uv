@@ -596,3 +596,28 @@ function theme_essential_uv_process_css($css, $theme) {
     // Finally return processed CSS.
     return $css;
 }
+
+/**
+ * Inject additional SCSS.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_essential_render_course_list($userid){
+    
+    // Se consultan todos los cursos en los que está matriculado un usuario
+    $all_courses = enrol_get_all_users_courses($userid, true, null);
+    
+    // Se crean los arreglos para clasificar los cursos de un usuario
+    $regular_courses = array();
+    $no_regular_courses = array();
+
+    foreach ($all_courses as $course){
+        if($course->category){
+            
+        }
+    }
+
+
+    
+}
