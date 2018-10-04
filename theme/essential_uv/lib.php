@@ -628,7 +628,19 @@ function theme_essential_render_course_list($userid){
     krsort($no_regular_courses_array);
     krsort($teacher_training_courses_array);
 
-    
+    $html_to_return = "<div class='panel-group' id='accordion'>";
+
+    if(count($no_regular_courses_array) > 0){
+        $html_to_return .= "<div class='panel panel-default'>";
+        $html_to_return .= "<div class='panel-heading'>";
+        $html_to_return .= "<h4 class='panel-title'>";
+
+        $html_to_return .= "</h4>";
+        $html_to_return .= "</div>";
+        $html_to_return .= "</div>";
+    }
+
+    $html_to_return .= "</div>";
 
     print_r("Cursos regulares");
     print_r("<br>");
@@ -643,6 +655,5 @@ function theme_essential_render_course_list($userid){
     print_r("Cursos capacitación docente");
     print_r("<br>");
     print_r($teacher_training_courses_array);
-
     
 }

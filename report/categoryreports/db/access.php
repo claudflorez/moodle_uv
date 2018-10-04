@@ -26,11 +26,7 @@ $capabilities = array(
     'report/categoryreports:view' => array(
         'riskbitmask' => RISK_PERSONAL,
         'captype' => 'read',
-<<<<<<< HEAD
         'contextlevel' => CONTEXT_SYSTEM,
-=======
-        'contextlevel' => CONTEXT_MODULE,
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
         'legacy' => array(
             )
         )
