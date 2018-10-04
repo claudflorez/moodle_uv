@@ -1,5 +1,6 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+
+// This file is part of the Certificate module for Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,25 +14,21 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Capability definitions for the custom SQL report.
+ * Code fragment to define the version of the certificate module
  *
- * @package report_customsql
- * @copyright 2009 The Open University
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    mod_certificate
+ * @copyright  Mark Nelson <markn@moodle.com>
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or late
  */
+
 defined('MOODLE_INTERNAL') || die();
-$capabilities = array(
-    // People who can view the reports at all.
-    'report/categoryreports:view' => array(
-        'riskbitmask' => RISK_PERSONAL,
-        'captype' => 'read',
-<<<<<<< HEAD
-        'contextlevel' => CONTEXT_SYSTEM,
-=======
-        'contextlevel' => CONTEXT_MODULE,
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
-        'legacy' => array(
-            )
-        )
-);
+
+$plugin->version   = 2016052300; // The current module version (Date: YYYYMMDDXX)
+$plugin->requires  = 2016052300; // Requires this Moodle version (3.1)
+$plugin->cron      = 0; // Period for cron to check this module (secs)
+$plugin->component = 'mod_certificate';
+
+$plugin->maturity  = MATURITY_STABLE;
+$plugin->release   = "3.1 (Build: 2016052300)"; // User-friendly version number

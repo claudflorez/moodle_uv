@@ -1,5 +1,6 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+
+// This file is part of the Certificate module for Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -13,25 +14,20 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Capability definitions for the custom SQL report.
+ * Definition of log events
  *
- * @package report_customsql
- * @copyright 2009 The Open University
- * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package    mod_certificate
+ * @copyright  2010 Petr Skoda (http://skodak.org)
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+
 defined('MOODLE_INTERNAL') || die();
-$capabilities = array(
-    // People who can view the reports at all.
-    'report/categoryreports:view' => array(
-        'riskbitmask' => RISK_PERSONAL,
-        'captype' => 'read',
-<<<<<<< HEAD
-        'contextlevel' => CONTEXT_SYSTEM,
-=======
-        'contextlevel' => CONTEXT_MODULE,
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
-        'legacy' => array(
-            )
-        )
+
+$logs = array(
+    array('module'=>'certificate', 'action'=>'view', 'mtable'=>'certificate', 'field'=>'name'),
+    array('module'=>'certificate', 'action'=>'add', 'mtable'=>'certificate', 'field'=>'name'),
+     array('module'=>'certificate', 'action'=>'update', 'mtable'=>'certificate', 'field'=>'name'),
+    array('module'=>'certificate', 'action'=>'received', 'mtable'=>'certificate', 'field'=>'name'),
 );

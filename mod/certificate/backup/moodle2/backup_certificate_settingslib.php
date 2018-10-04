@@ -1,6 +1,6 @@
 <?php
 
-// This file is part of Moodle - http://moodle.org/
+// This file is part of the Certificate module for Moodle - http://moodle.org/
 //
 // Moodle is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -14,19 +14,14 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+
 /**
- * Seetings of Category Reports
- *
- * @package   report_categoryreports
- * @copyright 2018 Iader E. García G.
+ * @package    mod_certificate
+ * @subpackage backup-moodle2
+ * @copyright 2010 onwards Eloy Lafuente (stronk7) {@link http://stronk7.com}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$ADMIN->add('reports', new admin_externalpage('report_categoryreports',
-        get_string('pluginname', 'report_categoryreports'),
-<<<<<<< HEAD
-        new moodle_url('/report/categoryreports/view/index.php')));
-=======
-        new moodle_url('/report/categoryreports/view/index.php')));
-
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
+ // This activity has no particular settings but the inherited from the generic
+ // backup_activity_task so here there isn't any class definition, like the ones
+ // existing in /backup/moodle2/backup_settingslib.php (activities section)

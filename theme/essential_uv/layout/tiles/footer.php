@@ -53,9 +53,24 @@ if (empty($PAGE->layout_options['nofooter'])) { ?>
                 <?php
 }
 ?>
+<<<<<<< HEAD
+<?php 
+    /*if ($hasfootnote) {
+        echo '<div class="footnote span12">'.$hasfootnote.'</div>';
+    }*/
+    //Imprimiendo el pie de página desde el código fuente del tema
+    $hasfootnote .= '<table style="border-collapse: separate; border-spacing: 10px;">';
+    $hasfootnote .= '<tbody><tr><td></td>';
+    $hasfootnote .= '<td><div class="editor-indent" style="margin-left: 40px;"><img src="'.$CFG->wwwroot.'/theme/crisp/pix/logo-footer.png" alt="" role="presentation" class="img-responsive atto_image_button_middle" width="100" height="141" /></div></td>';
+    $hasfootnote .= '<td style="vertical-align: top;"><p style="line-height: 1.4;"><b>Universidad del Valle</b><br />Cali - Colombia</p></td>';
+    $hasfootnote .= '<td style="vertical-align: top;"><p style="line-height: 1.4;">Dirección de Nuevas Tecnologías y Educación Virtual-DINTEV<br />campusvirtual@correounivalle.edu.co<br />Teléfonos: +57 2 3182649 ó 3212100 Ext. 2649<br />Edificio E18 (317) - Cree Ciudadela Universitaria Meléndez<br />Universidad del Valle<br />Cali-Colombia</p></td>';
+    $hasfootnote .= '</tr><tr><td></td><td></td><td></td></tr></tbody></table>';
+    echo $hasfootnote;
+=======
                 <?php if ($hasfootnote) {
                     echo '<div class="footnote span12">'.$hasfootnote.'</div>';
 }
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 ?>
             </div>
             <div class="footerperformance row-fluid">
