@@ -387,20 +387,11 @@ class format_onetopic_renderer extends format_section_renderer_base {
 
             $section++;
         }
-<<<<<<< HEAD
-=======
-
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
         // Title with section navigation links.
         $sectionnavlinks = $this->get_nav_links($course, $sections, $displaysection);
         $sectiontitle = '';
 
         if (!$course->hidetabsbar && count($tabs[0]) > 0) {
-<<<<<<< HEAD
-            
-=======
-
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
             if ($PAGE->user_is_editing() && has_capability('moodle/course:update', $context)) {
 
                 // Increase number of sections.

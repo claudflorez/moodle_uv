@@ -642,18 +642,18 @@ function theme_essential_render_course_list($userid){
 
     $html_to_return .= "</div>";
 
-    print_r("Cursos regulares");
-    print_r("<br>");
-    print_r($regular_courses_array);
+    // print_r("Cursos regulares");
+    // print_r("<br>");
+    // print_r($regular_courses_array);
 
-    print_r("<br>");
-    print_r("Cursos no regulares");
-    print_r("<br>");
-    print_r($no_regular_courses_array);
+    // print_r("<br>");
+    // print_r("Cursos no regulares");
+    // print_r("<br>");
+    // print_r($no_regular_courses_array);
 
-    print_r("<br>");
-    print_r("Cursos capacitación docente");
-    print_r("<br>");
-    print_r($teacher_training_courses_array);
+    // print_r("<br>");
+    // print_r("Cursos capacitación docente");
+    // print_r("<br>");
+    // print_r($teacher_training_courses_array);
     
 }
