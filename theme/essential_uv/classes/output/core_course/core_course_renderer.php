@@ -25,7 +25,17 @@
  * @license     http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+namespace theme_moove\output\core;
+
 defined('MOODLE_INTERNAL') || die;
+
+use moodle_url;
+use html_writer;
+use coursecat;
+use coursecat_helper;
+use stdClass;
+use course_in_list;
+
 
 class theme_essential_uv_core_course_renderer extends core_course_renderer {
     protected $enablecategoryicon;
@@ -271,7 +281,7 @@ class theme_essential_uv_core_course_renderer extends core_course_renderer {
             }
         }
 
-        return $content;
+        return $u;
     }
 
     /**
@@ -381,4 +391,6 @@ class theme_essential_uv_core_course_renderer extends core_course_renderer {
 
         return $data;
     }
+
+    
 }

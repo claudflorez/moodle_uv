@@ -596,3 +596,64 @@ function theme_essential_uv_process_css($css, $theme) {
     // Finally return processed CSS.
     return $css;
 }
+
+/**
+ * Inject additional SCSS.
+ *
+ * @param theme_config $theme The theme config object.
+ * @return string
+ */
+function theme_essential_render_course_list($userid){
+    
+    // Se consultan todos los cursos en los que está matriculado un usuario
+    $all_courses = enrol_get_all_users_courses($userid, true, null);
+    
+    // Se crean los arreglos para clasificar los cursos de un usuario
+    $regular_courses_array = array();
+    $no_regular_courses_array = array();
+    $teacher_training_courses_array = array();
+
+    // Se clasifican los cursos por categorias
+    foreach ($all_courses as $course){
+        if($course->category > 30000){
+            $regular_courses_array[$course->id] = $course;
+        }else if($course->category == 89){
+            $teacher_training_courses_array[$course->id] = $course;
+        }else{
+            $no_regular_courses_array[$course->id] = $course;
+        }
+    }
+
+    krsort($regular_courses_array);
+    krsort($no_regular_courses_array);
+    krsort($teacher_training_courses_array);
+
+    $html_to_return = "<div class='panel-group' id='accordion'>";
+
+    if(count($no_regular_courses_array) > 0){
+        $html_to_return .= "<div class='panel panel-default'>";
+        $html_to_return .= "<div class='panel-heading'>";
+        $html_to_return .= "<h4 class='panel-title'>";
+
+        $html_to_return .= "</h4>";
+        $html_to_return .= "</div>";
+        $html_to_return .= "</div>";
+    }
+
+    $html_to_return .= "</div>";
+
+    print_r("Cursos regulares");
+    print_r("<br>");
+    print_r($regular_courses_array);
+
+    print_r("<br>");
+    print_r("Cursos no regulares");
+    print_r("<br>");
+    print_r($no_regular_courses_array);
+
+    print_r("<br>");
+    print_r("Cursos capacitación docente");
+    print_r("<br>");
+    print_r($teacher_training_courses_array);
+    
+}

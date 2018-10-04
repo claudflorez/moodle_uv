@@ -82,11 +82,8 @@ Gareth J. Barnard<br>
 $string['left'] = 'Left';
 $string['right'] = 'Right';
 
-<<<<<<< HEAD
-=======
 $string['viewless'] = "View less";
 
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 $string['perfinfoheading'] = 'Performance Information';
 $string['extperfinfoheading'] = 'Extended Performance Information';
 $string['loadtime'] = 'Load Time';
@@ -975,8 +972,5 @@ $string['asconfigintnan'] = '{$a->value} is not a number';
 // Privacy.
 $string['privacy:metadata:preference:courseitemsearchtype'] = 'The users choice of course search (\'course fullname\' - \'0\' or all course content - \'1\') if ever stored when \'coursecontentsearch\' was ticked.  If nothing stated then either the course search is off or the user has never viewed the dsahboard it when it was on.';
 $string['privacy:request:preference:courseitemsearchtype'] = 'The user has chosen "{$a->value}" for the course search user preference "{$a->name}" where \'0\' is the \'course fullname only\' and \'1\' is \'all course content\'.';
-<<<<<<< HEAD
-=======
 
 
->>>>>>> 8daa0a0b52492f10a5476355744095703df303ea

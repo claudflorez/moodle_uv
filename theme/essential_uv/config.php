@@ -128,7 +128,7 @@ $THEME->layouts = array(
     ),
     // My dashboard page.
     'mydashboard' => array(
-        'file' => 'columns3.php',
+        'file' => 'mydashboard.php',
         'regions' => array_merge($standardregions, array('side-post')),
         'defaultregion' => 'side-post',
     ),
