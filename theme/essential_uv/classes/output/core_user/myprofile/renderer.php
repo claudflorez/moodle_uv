@@ -13,11 +13,23 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+<<<<<<< HEAD
+
+namespace theme_essential_uv\output\core_user\myprofile;
+use \core_user\output\myprofile\node;
+use moodle_url;
+
+defined('MOODLE_INTERNAL') || die();
+
+class renderer extends \core_user\output\myprofile\renderer {
+
+=======
 namespace theme_essential_uv\output\core_user\myprofile;
 use \core_user\output\myprofile\node;
 use moodle_url;
 defined('MOODLE_INTERNAL') || die();
 class renderer extends \core_user\output\myprofile\renderer {
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
     /**
      * Render a node.
      *
@@ -26,14 +38,74 @@ class renderer extends \core_user\output\myprofile\renderer {
      * @return string
      */
     public function render_node(node $node) {
+<<<<<<< HEAD
+
+        global $CFG;
+
+        $return = '';
+
+        $userid = OPTIONAL_PARAM('id', 0, PARAM_INT);
+
+=======
         global $CFG;
         $return = '';
         $userid = OPTIONAL_PARAM('id', 0, PARAM_INT);
         $allcourses = OPTIONAL_PARAM('showallcourses', 0, PARAM_INT);
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
         // Al entrar al nodo 'Perfiles de curso' se consultan los cursos en los cuales está 
         // matriculado el usuario, para su posterior ordenamiento
         if($node->title == "Perfiles de curso"){
             $courses = enrol_get_all_users_courses($userid, true, null);
+<<<<<<< HEAD
+            $virtual_courses_array = array();
+            $classroom_courses_array = array();
+            $html_to_return = "";
+
+            // Se separan los cursos en dos arreglos, uno para los cursos presenciales
+            // otro para cursos virtuales
+            foreach($courses as $course){
+                if($course->category > 30000){
+                    $classroom_courses_array[$course->id] = $course;
+                }else{
+                    $virtual_courses_array[$course->id] = $course;
+                }
+            }            
+
+            krsort($classroom_courses_array);
+            krsort($virtual_courses_array);
+
+            $html_to_return = "<br>";
+            $html_to_return .= "<b>Cursos presenciales: </b><br>";
+            $html_to_return .= "<ul>";
+
+            foreach($classroom_courses_array as $course){
+
+                $url = new moodle_url($CFG->wwwroot . '/course/view.php', array('id' => $course->id));
+                
+            	$html_to_return .= "<li>";
+            	$html_to_return .= "<a href='".$url."'>";
+            	$html_to_return .= $course->shortname." ".$course->fullname;
+            	$html_to_return .= "</a>";
+            	$html_to_return .= "</li>";
+            }
+
+            $html_to_return .= "</ul></br>";
+            $html_to_return .= "<b>Otros cursos: </b><br>";
+
+            foreach($virtual_courses_array as $course){
+
+                $url = new moodle_url($CFG->wwwroot . '/course/view.php', array('id' => $course->id));
+                
+            	$html_to_return .= "<li>";
+            	$html_to_return .= "<a href='".$url."'>";
+            	$html_to_return .= $course->shortname." ".$course->fullname;
+            	$html_to_return .= "</a>";
+            	$html_to_return .= "</li>";
+            }
+
+            $html_to_return .= "</ul>";
+
+=======
             $classroom_courses_array = array();
             $teacher_training_courses_array = array();
             $no_regular_courses_array = array();
@@ -136,6 +208,7 @@ class renderer extends \core_user\output\myprofile\renderer {
                 $url_less_courses = new moodle_url($CFG->wwwroot.'/user/profile.php', array('id' => $userid, 'showallcourses' => 0));
                 $html_to_return .= "<dd><a href='".$url_less_courses."'>".get_string('viewless')."</a></dd>";
             }
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
             $new_node = new node($node->parentcat,
                                  $node->name,
                                  $node->title,
@@ -144,7 +217,13 @@ class renderer extends \core_user\output\myprofile\renderer {
                                  $html_to_return,
                                  $node->icon,
                                  $node->classes);
+<<<<<<< HEAD
+
             $node = $new_node;
+
+=======
+            $node = $new_node;
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
         }
  
         if (is_object($node->url)) {
@@ -162,6 +241,10 @@ class renderer extends \core_user\output\myprofile\renderer {
             // There is some content to display below this make this a header.
             $return = \html_writer::tag('dt', $header);
             $return .= \html_writer::tag('dd', $content);
+<<<<<<< HEAD
+
+=======
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
             $return = \html_writer::tag('dl', $return);
             if ($classes) {
                 $return = \html_writer::tag('li', $return, array('class' => 'contentnode ' . $classes));
@@ -172,6 +255,13 @@ class renderer extends \core_user\output\myprofile\renderer {
             $return = \html_writer::span($header);
             $return = \html_writer::tag('li', $return, array('class' => $classes));
         }
+<<<<<<< HEAD
+
         return $return;
     }
+
+=======
+        return $return;
+    }
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 }

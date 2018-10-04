@@ -2124,7 +2124,10 @@ $string['viewing'] = 'Viewing:';
 $string['viewallcourses'] = 'View all courses';
 $string['viewallcoursescategories'] = 'View all courses and categories';
 $string['viewmore'] = 'View more';
+<<<<<<< HEAD
+=======
 $string['viewless'] = 'View less';
+>>>>>>> 8daa0a0b52492f10a5476355744095703df303ea
 $string['viewallsubcategories'] = 'View all subcategories';
 $string['viewfileinpopup'] = 'View file in a popup window';
 $string['viewprofile'] = 'View profile';
