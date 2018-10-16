@@ -574,6 +574,14 @@ if ($ADMIN->fulltree) {
     */
     $page = new admin_settingpage('theme_moove_footer', get_string('footersettings', 'theme_moove'));
 
+    // title stay in touch
+    $name = 'theme_moove/gettitlestayintouch';
+    $title = get_string('gettitlestayintouch', 'theme_moove');
+    $default = get_string('getnull', 'theme_moove');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     $name = 'theme_moove/getintouchcontent';
     $title = get_string('getintouchcontent', 'theme_moove');
     $description = get_string('getintouchcontentdesc', 'theme_moove');
