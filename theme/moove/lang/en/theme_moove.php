@@ -28,6 +28,7 @@ $string['pluginname'] = 'Moove';
 $string['configtitle'] = 'Moove';
 $string['choosereadme'] = 'Moove is a modern highly-customisable theme. This theme is intended to be used directly, or as a parent theme when creating new themes utilising Bootstrap 4.';
 
+$string['getnull'] = 'Null';
 $string['currentinparentheses'] = '(current)';
 $string['region-side-pre'] = 'Right';
 $string['login'] = 'Already have an account?';
@@ -187,6 +188,7 @@ $string['clientsurldesc'] = 'Enter the client\'s site URL';
 
 // Footer settings tab.
 $string['footersettings'] = 'Footer';
+$string['gettitlestayintouch'] = "Title stayintouch section";
 $string['getintouchcontent'] = 'Get In Touch Content';
 $string['getintouchcontentdesc'] = 'Enter Get In Touch Content Text';
 $string['website'] = 'Website URL';

@@ -50,7 +50,7 @@ class theme_settings {
 
         $footersettings = [
             'facebook', 'twitter', 'googleplus', 'linkedin', 'youtube', 'instagram', 'getintouchcontent',
-            'website', 'mobile', 'mail'
+            'gettitlestayintouch', 'website', 'mobile', 'mail'
         ];
 
         foreach ($footersettings as $setting) {
