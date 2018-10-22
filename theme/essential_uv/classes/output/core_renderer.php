@@ -380,14 +380,16 @@ class core_renderer extends \core_renderer {
             /*Mensage personalizado para invitar a eliminar cursos */
             global $CFG, $USER;
             $courses = enrol_get_all_users_courses($USER->id, true); 
-            // if(count((array)$courses) > 0){
-            //     $msg_delete_course = "Si usted desea eliminar alguno de sus cursos, por favor dirijase a la sección ";
-            //     $url_delete_courses = $CFG->wwwroot."/course/delete_course_old";
-            //     $content .= '<div class="alert alert-warning">';
-            //     $content .= '<h3>'.$msg_delete_course;
-            //     $content .= '<a style="color:#D51B23;" href='.$url_delete_courses.'>Eliminar cursos</a>';
-            //     $content .= '</h3></div>';
-            // }
+
+            if(count((array)$courses) > 0){
+                $msg_delete_course = "Si usted desea eliminar alguno de sus cursos, por favor dirijase a la sección ";
+                $url_delete_courses = $CFG->wwwroot."/course/delete_course_old";
+                $content .= '<div class="alert alert-warning">';
+                $content .= '<h3>'.$msg_delete_course;
+                $content .= '<a style="color:#D51B23;" href='.$url_delete_courses.'>Eliminar cursos</a>';
+                $content .= '</h3></div>';
+            }
+
             /*Campo de búsqueda*/
             if (\theme_essential_uv\toolbox::course_content_search()) {
                 $content .= '<div class="courseitemsearch">';
@@ -1960,6 +1962,7 @@ class core_renderer extends \core_renderer {
                     }
                     $regioncontent .= $flatnavigationcontent;
                     $regioncontent .= $this->essential_uv_blocks_for_region($region, $blocksperrow, $editing, $flatnavigation);
+                    print_r($this->essential_uv_blocks_for_region($region, $blocksperrow, $editing, $flatnavigation));
                     $output = html_writer::tag($tag, $regioncontent, $attributes);
                 } else if ($flatnavigation) {
                     $regioncontent .= $this->essential_uv_flatnav_blocks_for_region($region, $flatnavigationcontent);
@@ -2040,6 +2043,7 @@ class core_renderer extends \core_renderer {
      */
     protected function essential_uv_blocks_for_region($region, $blocksperrow, $editing, $hidenavset) {
         $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        
         $output = '';
 
         $blockcount = count($blockcontents);
@@ -2584,6 +2588,44 @@ class core_renderer extends \core_renderer {
         } else {
             return $favicon;
         }
+    }
+
+    /**
+     * Output all the blocks in a particular region.
+     *
+     * @param string $region the name of a region on this page.
+     * @return string the HTML to be output.
+     */
+    public function blocks_for_region($region) {
+        $blockcontents = $this->page->blocks->get_content_for_region($region, $this);
+        $blocks = $this->page->blocks->get_blocks_for_region($region);
+        $lastblock = null;
+        $zones = array();
+        foreach ($blocks as $block) {
+            $zones[] = $block->title;
+        }
+        $output = '';
+
+        foreach ($blockcontents as $bc) {
+            
+            if($bc->attributes['data-block'] == 'course_list'){
+                global $USER;
+                $userid = $USER->id;
+                $result = "";
+                $result = theme_essential_render_course_list($userid);
+                $bc->content = $result;
+            }
+
+            if ($bc instanceof block_contents) {
+                $output .= $this->block($bc, $region);
+                $lastblock = $bc->title;
+            } else if ($bc instanceof block_move_target) {
+                $output .= $this->block_move_target($bc, $zones, $lastblock, $region);
+            } else {
+                throw new coding_exception('Unexpected type of thing (' . get_class($bc) . ') found in list of block contents.');
+            }
+        }
+        return $output;
     }
 }
 

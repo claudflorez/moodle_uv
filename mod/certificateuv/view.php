@@ -44,8 +44,6 @@ if (!$certificate = $DB->get_record('certificateuv', array('id'=> $cm->instance)
 
 $certificate->nameteacher = "Teacher testing";
 
-print_r($certificate);
-
 require_login($course, false, $cm);
 $context = context_module::instance($cm->id);
 
