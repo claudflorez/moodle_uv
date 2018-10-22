@@ -34,7 +34,7 @@
             "page_title": "Test page",
             "favicon": "favicon.ico",
             "main_content": "<h1>Headings make html validators happier</h1>"
-         },
+        },
         "bodyattributes":"",
         "cansignup": true,
         "bannerheading": "Content string banner heading",
@@ -42,46 +42,50 @@
         "shoulddisplaymarketing": true
     }
 }}
+
     {{>theme_moove/inc_start}}
 
     <div id="page" class="container-fluid">
-        <div id="page-header" class="frontpage-guest-header">
+        <div id="page-header" class="">
+          {{#sliderenabled}}
+            {{#sliderfrontpage}}
+              {{>theme_moove/slideshow}}
+              {{^hasdrawertoggle}}
+              {{^isloggedin}}
+                <div id="loginbox" class="d-none d-lg-block">
+                  <div class="card" id="boxForm">
+                    {{>theme_moove/frontpage_login}}
+                  </div>
+                </div>
+                {{/isloggedin}}
+              {{/hasdrawertoggle}}
+            {{/sliderfrontpage}}
+          {{/sliderenabled}}
 
-            {{#sliderenabled}}
-                {{#sliderfrontpage}}
-                    {{>theme_moove/slideshow}}
-
-                    {{^hasdrawertoggle}}
-                        <div id="loginbox" class="d-none d-lg-block">
-                            <div class="card" id="boxForm">
-                                {{>theme_moove/frontpage_login}}
-                            </div>
-                        </div>
-                    {{/hasdrawertoggle}}
-                {{/sliderfrontpage}}
-            {{/sliderenabled}}
-
-            {{^sliderenabled}}
-                <div class="row" id="loginbox">
-                    <div class="col-sm-12 col-md-7 hidden-sm-down" id="intro">
-                        {{#bannerheading}}
-                            <h1>{{{ bannerheading }}}</h1>
-                        {{/bannerheading}}
-                        {{#bannercontent}}
-                            <h2>{{{ bannercontent }}}</h2>
-                        {{/bannercontent}}
-                    </div>
+          {{^sliderenabled}}
+            {{^isloggedin}}
+              <div class="row" id="loginbox">
+                  <div class="col-sm-12 col-md-7 hidden-sm-down" id="intro">
+                    {{#bannerheading}}
+                      <h1>{{{ bannerheading }}}</h1>
+                    {{/bannerheading}}
+                    {{#bannercontent}}
+                      <h2>{{{ bannercontent }}}</h2>
+                    {{/bannercontent}}
+                  </div>
+                  
                     <div class="col-12 col-sm-12 col-md-5 card d-none d-lg-block" id="boxForm">
-                        {{>theme_moove/frontpage_login}}
+                      {{>theme_moove/frontpage_login}}
                     </div><!-- end of .card-body -->
-                </div> <!-- end of #boxForm -->
-            {{/sliderenabled}}
+              </div> <!-- end of #boxForm -->
+            {{/isloggedin}}
+          {{/sliderenabled}}
         </div>
 
         {{#shoulddisplaymarketing}}
           <div class="frontpage-marketing row">
-              <div class="col-md-3">
-                <div class="card">
+              <div class="col-lg-3 col-md-3 d-flex">
+                <div class="card" style="width: 100%">
                   <div class="card-body">
                     <img src="{{{ marketing1icon }}}" />
                     <h2>{{{ marketing1heading }}}</h2>
@@ -92,7 +96,7 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-lg-3 col-md-3 d-flex">
                 <div class="card">
                   <div class="card-body">
                     <img src="{{{ marketing2icon }}}" />
@@ -104,7 +108,7 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-lg-3 col-md-3 d-flex">
                 <div class="card">
                   <div class="card-body">
                     <img src="{{{ marketing3icon }}}" />
@@ -116,14 +120,13 @@
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <div class="col-lg-3 col-md-3 d-flex">
                 <div class="card">
                   <div class="card-body">
                     <img src="{{{ marketing4icon }}}" />
                     <h2>{{{ marketing4heading }}}</h2>
                     <h3>{{{ marketing4subheading }}}</h3>
-                    <p>{{{ marketing4content }}}</p>
-                    {{#marketing4url}}<a class="btn btn-primary" href="{{{ marketing4url }}}">{{#str}}readmore, theme_moove{{/str}}</a>{{/marketing4url}}
+                    {{>theme_moove/frontpage_slider_section4}}
                   </div>
                 </div>
               </div>
@@ -131,10 +134,8 @@
               <div class="clearfix"></div>
           </div>
         {{/shoulddisplaymarketing}}
-
-        <div class="container-fluid">
-          {{{ output.main_content }}}
-        </div>
+        
+        {{{ output.main_content }}}        
 
         {{>theme_moove/frontpage_numbers}}
 

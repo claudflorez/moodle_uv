@@ -708,7 +708,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
                                 "<i class='icon-screen-smartphone'></i> ".get_string('getmoodleonyourmobile', 'tool_mobile'),
                                      ['class' => 'btn btn-primary']);
 
-            $output .= html_writer::div($url, 'mobilefooter mb-2');
+            //$output .= html_writer::div($url, 'mobilefooter mb-2');
         }
 
         return $output;

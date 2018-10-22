@@ -1,0 +1,58 @@
+
+.messaging-area-container .contacts-area .contacts .contact .information .name{
+    font-size: 0.78rem;
+    color: #cd1f32;
+}
+
+
+
+.messaging-area-container .contacts-area .contacts .contact .information .lastmessage{
+    font-size: 0.75rem;
+    color: #373a3c !important;
+}
+
+
+.messaging-area-container .contacts-area .contacts .contact.selected {
+    background-color: #cd1f32 !important;
+    border-color: #b8daff !important;
+}
+
+.messaging-area-container .contacts-area .contacts .contact.selected .information .name{
+    font-size: 0.78rem;
+    color: #fff !important;
+}
+
+.messaging-area-container .contacts-area .contacts .contact.selected .information .lastmessage{
+    font-size: 0.75rem;
+    color: #fff !important;
+}
+
+.messaging-area-container .messaging-area .messages-area .messages-header .name-container .name button{
+    color: #cd1f32 !important;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.messaging-area-container .messaging-area .messages-area .messages .message .content.right{
+    background: #ebebeb none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #646464;
+    font-size: 14px;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+
+}
+
+.messaging-area-container .messaging-area .messages-area .messages .message .content.left{
+    background: #cd1f32 none repeat scroll 0 0;
+    border-radius: 3px;
+    font-size: 14px;
+    color: #fff;
+    padding: 5px 10px 5px 12px;
+    width: 100%;
+}
+
+.messaging-area-container .messaging-area .messages-area .messages .message .content.left span{
+    color: #fff;
+    font-weight: bold;
+}

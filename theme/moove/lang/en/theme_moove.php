@@ -28,6 +28,7 @@ $string['pluginname'] = 'Moove';
 $string['configtitle'] = 'Moove';
 $string['choosereadme'] = 'Moove is a modern highly-customisable theme. This theme is intended to be used directly, or as a parent theme when creating new themes utilising Bootstrap 4.';
 
+$string['getnull'] = 'Null';
 $string['currentinparentheses'] = '(current)';
 $string['region-side-pre'] = 'Right';
 $string['login'] = 'Already have an account?';
@@ -35,7 +36,7 @@ $string['prev_section'] = 'Previous section';
 $string['next_section'] = 'Next section';
 $string['search_site'] = 'Search on site';
 $string['search_forums'] = 'Search on course forums';
-$string['platform_access'] = 'Access to the platform';
+$string['platform_access_moove'] = 'Access to the platform';
 $string['readmore'] = 'Read More';
 $string['stayintouch'] = 'Stay in touch';
 $string['madewitmoodle'] = 'Proudly made with';
@@ -147,6 +148,25 @@ $string['slidertitledesc'] = 'Add the slide\'s title.';
 $string['slidercaption'] = 'Slider caption';
 $string['slidercaptiondesc'] = 'Add a caption for your slide';
 
+// Slider four section
+$string['slider_foursection_enabled'] = 'Enable slider marketing4';
+$string['slider_foursection_enabled_desc'] = 'If it is enabled, in section 4 of the Marketing area a slider is shown, replacing the content of the section.';
+$string['slider_foursection_count'] = 'Slider count';
+$string['slider_foursection_count_desc'] = 'Select how many slides you want to add <strong>then click SAVE</strong> to load the input fields.';
+$string['slider_foursection_image'] = 'Slider picture marketing4';
+$string['slider_foursection_image_desc'] = 'Add an image for your slide in the marketing4 section<b>pendiente</b>';
+$string['slider_foursection_title'] = 'Slide title in the marketing4 section.';
+$string['slider_foursection_titledesc'] = 'Add the slide\'s title for the slide in the marketing4 section.';
+$string['slider_foursection_caption'] = 'Slider marketing4 caption';
+$string['slider_foursection_captiondesc'] = 'Add a caption for slider pic in marketing4 section.';
+$string['slider_foursection_imageurl'] = 'URL picture';
+$string['slider_foursection_imageurl_desc'] = 'Add a URL to which the image will be routed.';
+
+$string['opencourses_title'] = 'Title for open courses';
+$string['opencourses_title_desc'] = 'Add a title for opencourses section';
+$string['opencourses_subtitle'] = 'Subtitle for open courses';
+$string['opencourses_subtitle_desc'] = 'Add a subtitle for opencourses section.';
+
 $string['numbersfrontpage'] = 'Show site numbers on frontpage';
 $string['numbersfrontpagedesc'] = 'If enabled, display the number of active users, courses and activities in the frontpage.';
 $string['frontpagenumbersome'] = 'Some';
@@ -187,6 +207,7 @@ $string['clientsurldesc'] = 'Enter the client\'s site URL';
 
 // Footer settings tab.
 $string['footersettings'] = 'Footer';
+$string['gettitlestayintouch'] = "Title stayintouch section";
 $string['getintouchcontent'] = 'Get In Touch Content';
 $string['getintouchcontentdesc'] = 'Enter Get In Touch Content Text';
 $string['website'] = 'Website URL';
@@ -195,6 +216,8 @@ $string['mobile'] = 'Mobile';
 $string['mobiledesc'] = 'Enter Mobile No';
 $string['mail'] = 'E-Mail';
 $string['maildesc'] = 'Enter E-Mail ID';
+$string['address'] = 'Address';
+$string['address_desc'] = 'Enter address';
 $string['facebook'] = 'Facebook URL';
 $string['facebookdesc'] = 'Enter the URL of your Facebook. (i.e http://www.facebook.com/moodlehq)';
 $string['twitter'] = 'Twitter URL';
@@ -211,6 +234,12 @@ $string['topfooterimg'] = 'Footer image';
 $string['topfooterimgdesc'] = 'Upload your custom footer image here if you want to replace the default image. Recommended size is 1500px x 400px or higher.';
 $string['disablebottomfooter'] = 'Disable bottom footer';
 $string['disablebottomfooterdesc'] = 'Disables the orange bottom footer';
+$string['facebook_icon'] = "Facebook icon";
+$string['facebook_icon_desc'] = "Upload Facebook icon";
+$string['youtube_icon'] = "Youtube icon";
+$string['youtube_icon_desc'] = "Upload Youtube icon";
+$string['twitter_icon'] = "Twitter icon";
+$string['twitter_icon_desc'] = "Upload Twitter icon";
 
 // Forum.
 $string['forumsettings'] = 'Forum';

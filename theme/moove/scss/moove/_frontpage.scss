@@ -85,7 +85,7 @@
         background-position: left top;
         background-repeat: no-repeat;
         background-color: #fff;
-        background-size: 100%;
+        background-size: 100% auto;
         min-height: 540px;
         padding: 0 4rem;
 
@@ -168,6 +168,7 @@
 
                 .sign-up-btn {
                     .btn {
+                        background-color: $brand-primary;
                         padding: 10px 20px;
                         margin-left: 0;
                         font-size: 1.3rem;
@@ -199,7 +200,7 @@
     }
 
     .frontpage-marketing {
-        margin: -4em 0 2em 0;
+        margin: 0em 0 2em 0;
         padding: 2em 20px 0 20px;
         background-image: url('[[pix:theme|headerimg-bg]]');
         background-position: center top;
@@ -208,6 +209,7 @@
         .card {
             text-align: center;
             min-height: 300px;
+            width: 100%;
 
             img {
               max-width: 100%;
@@ -287,8 +289,9 @@
     }
 
     .frontpage-sponsors {
-        margin: 3em auto;
+        margin: 0em auto;
         text-align: center;
+        padding-bottom: 4em;
 
         p {
             font-size: 1.2rem;
@@ -296,12 +299,12 @@
         }
 
         .row {
-            display: table;
+            margin-top: 2em;
             width: 100%;
 
             .item {
                 display: table-cell;
-                margin: 0 10px;
+                
 
                 img {
                     vertical-align: middle;
@@ -311,8 +314,8 @@
         }
 
         hr {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
+            margin-top: 0rem;
+            margin-bottom: 0rem;
         }
     }
 

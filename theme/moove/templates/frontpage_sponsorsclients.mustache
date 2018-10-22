@@ -1,18 +1,23 @@
-<div class="container frontpage-sponsors">
+<div class="frontpage-sponsors">
     {{#sponsorsfrontpage}}
-        <h2>{{{sponsorstitle}}}</h2>
-        <p>{{{sponsorssubtitle}}}</p>
-        <div class="row">
-            {{#sponsors}}
-            <div class="item">
-                <a href="{{{url}}}">
-                    <img src="{{{image}}}" title="{{{url}}}"/>
-                </a>
-            </div>
-            {{/sponsors}}
+    <div class="row">
+        <div class="col-md-4 offset-md-4 div-section-title">
+            <h3 class="frontpage-section-title">{{{sponsorstitle}}}</h3>
+            <hr>
+            <h6 class="frontpage-section-subtitle">{{{sponsorssubtitle}}}</h5>
         </div>
+    </div>
+    <div class="row">
+        <div class="offset-2"></div>
+        {{#sponsors}}
+        <div class="col-lg-2 col-md-2">
+            <a href="{{{url}}}">
+                <img src="{{{image}}}" class="img-fluid" title="{{{url}}}"/>
+            </a>
+        </div>
+        {{/sponsors}}
+    </div>
 
-        <hr />
     {{/sponsorsfrontpage}}
 
     {{#clientsfrontpage}}
