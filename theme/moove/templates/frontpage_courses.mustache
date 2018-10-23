@@ -1,0 +1,26 @@
+<div class="col-md-4 offset-md-4 div-section-title">
+    <h3 class="frontpage-section-title"> {{ opencourses_title }} </h3>
+    <hr>
+    <h6 class="frontpage-section-subtitle"> {{ opencourses_subtitle }}</h5>
+</div>
+<div class="row" id="frontpage-opencourses-list">
+{{#courses}}
+    <div class="col-md-2 d-flex align-items-stretch">
+        <div class="card">
+            <a href="">
+                <img src="{{{ imgurl }}}" class="card-img-top" alt="{{fullname}}">
+            </a>
+            <div class="card-body d-flex flex-column">
+                <div>
+                    <h4 class="h5">{{{fullname}}}</h4>
+                </div>
+                <div class="mt-auto text-right">
+                    <a href="{{courseurl}}" class="btn btn-opencourses-section">Acceder</a>                
+                </div>
+            </div>
+        </div>
+    </div>
+{{/courses}}
+</div>
+
+

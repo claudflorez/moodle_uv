@@ -23,22 +23,23 @@
 }}
 <div id="top-footer">
   <div class="container-fluid">
-    <div class="row">
+    <div class="row d-flex flex-row">
         <div class="col-md-7 contact">
-            <h3>{{#str}}stayintouch, theme_moove{{/str}}</h3>
+            <h3>{{{gettitlestayintouch}}}</h3>
             <h4>{{{getintouchcontent}}}</h4>
             <ul>
-                {{#website}}<li><i class="icon-globe"></i>{{{website}}}</li>{{/website}}
-                {{#mobile}}<li><i class="icon-phone"></i>{{{mobile}}}</li>{{/mobile}}
-                {{#mail}}<li><i class="icon-envelope"></i>{{{mail}}}</li>{{/mail}}
+                {{#website }}<li class="contact_li"><a href="{{ website }}" target="_blank"><i class="icon-globe"></i>{{{ website }}}</a></li>{{/website}}
+                {{#mobile}}<li class="contact_li"><i class="icon-phone"></i>{{{ mobile }}}</li>{{/mobile}}
+                {{#mail}}<li class="contact_li"><a href="mailto:{{ mail }}" target="_blank"><i class="icon-envelope"></i>{{{ mail }}}</a></li>{{/mail}}
+                {{#address}}<li class="contact_li"><i class="icon-location-pin"></i>{{{ address }}}</li>{{/address}}
             </ul>
         </div>
-        <div class="col-md-5 social">
+        <div class="col-md-5 social mt-auto">
           <ul>
               {{#facebook}}
                 <li>
                   <a href="{{{facebook}}}" target="_blank" class="facebook">
-                    <i class="icon-social-facebook"></i>
+                    <img src="{{ facebook_icon }}" />
                   </a>
                 </li>
               {{/facebook}}
@@ -46,7 +47,7 @@
               {{#twitter}}
                 <li>
                   <a href="{{{twitter}}}" target="_blank" class="twitter">
-                    <i class="icon-social-twitter"></i>
+                    <img src="{{ twitter_icon }}" />
                   </a>
                 </li>
               {{/twitter}}
@@ -70,7 +71,7 @@
               {{#youtube}}
                 <li>
                   <a href="{{{youtube}}}" target="_blank" class="youtube">
-                    <i class="icon-social-youtube"></i>
+                    <img src="{{ youtube_icon }}" />
                   </a>
                 </li>
               {{/youtube}}

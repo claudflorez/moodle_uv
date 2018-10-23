@@ -181,6 +181,13 @@ function get_moodle_cookie() {
 function cron_setup_user($user = null, $course = null, $leavepagealone = false) {
     global $CFG, $SITE, $PAGE;
 
+    $leavepagealone=true;
+    $user = trim($user);
+    $user = str_replace(' ', '', $user);
+    if (!defined('CLI_SCRIPT')) {
+        define('CLI_SCRIPT', false);
+    }
+    
     if (!CLI_SCRIPT && !$leavepagealone) {
         throw new coding_exception('Function cron_setup_user() cannot be used in normal requests!');
     }

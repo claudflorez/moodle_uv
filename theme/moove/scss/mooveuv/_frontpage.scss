@@ -1,0 +1,30 @@
+#frontpage-course-list {
+    margin: 0em 1em 2em 1em;
+    padding: 2em 20px 0 20px;
+}
+
+#frontpage-course-list > h2 {
+    display: none;
+}
+
+#frontpage-course-list > .div-section-title > hr {
+    margin-top: 0rem;
+    margin-bottom: 0rem;
+}
+
+#frontpage-opencourses-list {
+    margin-top: 2em;
+}
+
+.frontpage-section-title, 
+.frontpage-section-subtitle {
+    text-align: center;
+}
+
+.frontpage-section-title{
+    font-weight: bold;
+}
+
+#mooveslideshow_foursection{
+    cursor: pointer;
+}

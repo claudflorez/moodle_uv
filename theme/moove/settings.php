@@ -239,7 +239,7 @@ if ($ADMIN->fulltree) {
     $title = get_string('marketing1content', 'theme_moove');
     $description = get_string('marketing1contentdesc', 'theme_moove');
     $default = 'Moodle hosting in a powerful cloud infrastructure';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
@@ -283,7 +283,7 @@ if ($ADMIN->fulltree) {
     $title = get_string('marketing2content', 'theme_moove');
     $description = get_string('marketing2contentdesc', 'theme_moove');
     $default = 'Moodle consulting and training for you';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
@@ -327,7 +327,7 @@ if ($ADMIN->fulltree) {
     $title = get_string('marketing3content', 'theme_moove');
     $description = get_string('marketing3contentdesc', 'theme_moove');
     $default = 'We develop themes and plugins as your desires';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
@@ -339,6 +339,9 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    
+    // Marketing area slider
+    
     // Marketing4icon.
     $name = 'theme_moove/marketing4icon';
     $title = get_string('marketing4icon', 'theme_moove');
@@ -366,22 +369,78 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    // Marketing4content.
-    $name = 'theme_moove/marketing4content';
-    $title = get_string('marketing4content', 'theme_moove');
-    $description = get_string('marketing4contentdesc', 'theme_moove');
-    $default = 'MOODLE specialized support';
-    $setting = new admin_setting_configtextarea($name, $title, $description, $default);
+    // Slider four section
+    $name = 'theme_moove/slider_foursection_enabled';
+    $title = get_string('slider_foursection_enabled',  'theme_moove');
+    $description = get_string('slider_foursection_enabled_desc', 'theme_moove');
+    $setting = new admin_setting_configcheckbox($name, $title, $description, 0);
+    $page->add($setting);
+
+    // Slider four section 4 count
+    $name = 'theme_moove/slider_foursection_count';
+    $title = get_string('slider_foursection_count', 'theme_moove');
+    $description = get_string('slider_foursection_count_desc', 'theme_moove');
+    $default = 1;
+    $options = array();
+    for ($i = 0; $i < 6; $i++) {
+        $options[$i] = $i;
+    }
+    $setting = new admin_setting_configselect($name, $title, $description, $default, $options);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
-    // Marketing4url.
-    $name = 'theme_moove/marketing4url';
-    $title = get_string('marketing4url', 'theme_moove');
-    $description = get_string('marketing4urldesc', 'theme_moove');
-    $setting = new admin_setting_configtext($name, $title, $description, '');
-    $setting->set_updatedcallback('theme_reset_all_caches');
+    // If we don't have an slide in section 4 yet, default to the preset.
+    $slidercount_foursection = get_config('theme_moove', 'slider_foursection_count');
+
+    if (!$slidercount_foursection) {
+        $slidercount_foursection = 1;
+    }
+
+    for ($sliderindex = 1; $sliderindex <= $slidercount_foursection; $sliderindex++) {
+        $fileid = 'slider_foursection_image' . $sliderindex;
+        $name = 'theme_moove/slider_foursection_image' . $sliderindex;
+        $title = get_string('slider_foursection_image', 'theme_moove');
+        $description = get_string('slider_foursection_image_desc', 'theme_moove');
+        $opts = array('accepted_types' => array('.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'), 'maxfiles' => 1);
+        $setting = new admin_setting_configstoredfile($name, $title, $description, $fileid, 0, $opts);
+        $setting->set_updatedcallback('theme_reset_all_caches');
+        $page->add($setting);
+
+        $name = 'theme_moove/slider_foursection_imageurl' . $sliderindex;
+        $title = get_string('slider_foursection_imageurl', 'theme_moove');
+        $description = get_string('slider_foursection_imageurl_desc', 'theme_moove');
+        $default = '';
+        $setting = new admin_setting_configtext($name, $title, $description, $default);
+        $page->add($setting);
+
+        $name = 'theme_moove/slider_foursection_title' . $sliderindex;
+        $title = get_string('slider_foursection_title', 'theme_moove');
+        $description = get_string('slider_foursection_titledesc', 'theme_moove');
+        $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_TEXT);
+        $page->add($setting);
+
+        $name = 'theme_moove/slider_foursection_cap' . $sliderindex;
+        $title = get_string('slider_foursection_caption', 'theme_moove');
+        $description = get_string('slider_foursection_captiondesc', 'theme_moove');
+        $default = '';
+        $setting = new admin_setting_confightmleditor($name, $title, $description, $default);
+        $page->add($setting);
+    }
+
+    // End settings for slider section 4
+
+    // Open courses settings
+    $name = 'theme_moove/opencourses_title';
+    $title = get_string('opencourses_title', 'theme_moove');
+    $description = get_string('opencourses_title_desc', 'theme_moove');
+    $setting = new admin_setting_configtext($name, $title, $description, 0);
     $page->add($setting);
+
+    $name = 'theme_moove/opencourses_subtitle';
+    $title = get_string('opencourses_subtitle', 'theme_moove');
+    $description = get_string('opencourses_subtitle_desc', 'theme_moove');
+    $setting = new admin_setting_configtext($name, $title, $description, 0);
+    $page->add($setting);    
 
     // Enable or disable Slideshow settings.
     $name = 'theme_moove/sliderenabled';
@@ -574,6 +633,14 @@ if ($ADMIN->fulltree) {
     */
     $page = new admin_settingpage('theme_moove_footer', get_string('footersettings', 'theme_moove'));
 
+    // title stay in touch
+    $name = 'theme_moove/gettitlestayintouch';
+    $title = get_string('gettitlestayintouch', 'theme_moove');
+    $default = get_string('getnull', 'theme_moove');
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     $name = 'theme_moove/getintouchcontent';
     $title = get_string('getintouchcontent', 'theme_moove');
     $description = get_string('getintouchcontentdesc', 'theme_moove');
@@ -609,12 +676,39 @@ if ($ADMIN->fulltree) {
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
+    // Address.
+    $name = 'theme_moove/address';
+    $title = get_string('address', 'theme_moove');
+    $description = get_string('addres_desc', 'theme_moove');
+    $default = 'Calle falsa 123';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Facebook icon.
+    $name = 'theme_moove/facebook_icon';
+    $title = get_string('facebook_icon', 'theme_moove');
+    $description = get_string('facebook_icon_desc', 'theme_moove');
+    $opts = array('accepted_types' => array('.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'));
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'facebook_icon', 0, $opts);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     // Facebook url setting.
     $name = 'theme_moove/facebook';
     $title = get_string('facebook', 'theme_moove');
     $description = get_string('facebookdesc', 'theme_moove');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Twitter icon.
+    $name = 'theme_moove/twitter_icon';
+    $title = get_string('twitter_icon', 'theme_moove');
+    $description = get_string('twitter_icon_desc', 'theme_moove');
+    $opts = array('accepted_types' => array('.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'));
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'twitter_icon', 0, $opts);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 
@@ -642,6 +736,15 @@ if ($ADMIN->fulltree) {
     $description = get_string('linkedindesc', 'theme_moove');
     $default = '';
     $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
+    // Twitter icon.
+    $name = 'theme_moove/youtube_icon';
+    $title = get_string('youtube_icon', 'theme_moove');
+    $description = get_string('youtube_icon_desc', 'theme_moove');
+    $opts = array('accepted_types' => array('.png', '.jpg', '.gif', '.webp', '.tiff', '.svg'));
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'youtube_icon', 0, $opts);
     $setting->set_updatedcallback('theme_reset_all_caches');
     $page->add($setting);
 

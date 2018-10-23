@@ -333,4 +333,58 @@ class course_renderer extends \core_course_renderer {
 
         return $contentimage;
     }
+
+    /**
+     * Renderer for the frontpage available course
+     * @return type|string
+     */
+    public function frontpage_available_courses($categoryid = 109) {
+        /* available courses */
+        global $CFG, $OUTPUT;
+        require_once($CFG->libdir. '/coursecatlib.php');
+
+        $content = '';
+
+        $cat = coursecat::get($categoryid);
+        $children_courses = $cat->get_courses();
+        
+        $templatecontext = ['opencourses_title' => theme_moove_get_setting('opencourses_title', true),
+                            'opencourses_subtitle' => theme_moove_get_setting('opencourses_subtitle', true),
+                            'courses' => []];
+
+        foreach($children_courses as $course) {
+
+            $fullcourse = get_course($course->id);
+            $noimgurl = $OUTPUT->image_url('no-image', 'theme');
+            $courseurl = new moodle_url('/course/view.php', array('id' => $course->id ));
+            if ($fullcourse instanceof stdClass) {
+                require_once($CFG->libdir. '/coursecatlib.php');
+                $fullcourse = new course_in_list($fullcourse);
+            }
+
+            foreach ($fullcourse->get_course_overviewfiles() as $file) {
+                $isimage = $file->is_valid_image();
+                $imgurl = file_encode_url("$CFG->wwwroot/pluginfile.php",
+                '/'. $file->get_contextid(). '/'. $file->get_component(). '/'.
+                $file->get_filearea(). $file->get_filepath(). $file->get_filename(), !$isimage);
+                if (!$isimage) {
+                    $imgurl = $noimgurl;
+                }
+            }
+            if (empty($imgurl)) {
+                $imgurl = '';
+            }
+
+            array_push($templatecontext['courses'], ['courseid' => $fullcourse->id,
+                                                     'fullname' => ucfirst(mb_strtolower($fullcourse->fullname, 'utf-8')),
+                                                     'courseurl' => $courseurl,
+                                                     'imgurl' => $imgurl]);
+        }
+
+        $this->page->requires->js_call_amd('theme_moove/slider_section', 'init');
+
+        $content .= $this->render_from_template('theme_moove/frontpage_courses', $templatecontext);
+
+        return $content;
+    }
 }

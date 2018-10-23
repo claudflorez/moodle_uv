@@ -1,29 +1,29 @@
 <div class="card-body">
-    <h3>{{#str}}platform_access, theme_moove{{/str}}</h3>
-    <form class="signup-form" action="{{{ config.wwwroot }}}/login/index.php" method="POST" role="form">
-        <label for="username">
-            {{^canloginbyemail}}
-                {{#str}}username{{/str}}
-            {{/canloginbyemail}}
-            {{#canloginbyemail}}
-                {{#str}}usernameemail{{/str}}
-            {{/canloginbyemail}}
-        </label>
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-envelope add-on"></i></div>
-            <input type="text" class="form-control" id="username" name="username" placeholder="{{#str}}username{{/str}}" required />
-        </div>
+  <h3> {{{ platform_access_moove }}} </h3>
+  <form class="signup-form" action="{{{ config.wwwroot }}}/login/index.php" method="POST" role="form">
+    <label for="username">
+      {{^canloginbyemail}}
+        {{#str}}username{{/str}}
+      {{/canloginbyemail}}
+      {{#canloginbyemail}}
+        {{#str}}usernameemail{{/str}}
+      {{/canloginbyemail}}
+    </label>
+    <div class="input-group">
+      <div class="input-group-addon"><i class="fa fa-user add-on"></i></div>
+      <input type="text" class="form-control" id="username" name="username" placeholder="{{#str}}username{{/str}}" required />
+    </div>
 
-        <label for="password">{{#str}}password{{/str}}</label>
-        <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-lock add-on"></i></div>
-            <input type="password" class="form-control" id="password" name="password" placeholder="{{#str}}password{{/str}}" required />
-        </div>
+      <label for="password">{{#str}}password{{/str}}</label>
+      <div class="input-group">
+          <div class="input-group-addon"><i class="fa fa-lock add-on"></i></div>
+          <input type="password" class="form-control" id="password" name="password" placeholder="{{#str}}password{{/str}}" required />
+      </div>
 
-        <div class="sign-up-btn">
-            <button type="submit" class="btn btn-primary">{{#str}}login{{/str}}</button>
-        </div>
-    </form>
+      <div class="sign-up-btn">
+          <button type="submit" class="btn btn-login">{{#str}}login{{/str}}</button>
+      </div>
+  </form>
 
     {{#output.has_identity_providers}}
         <h5 class="m-t-2">{{#str}} potentialidps, auth {{/str}}</h5>

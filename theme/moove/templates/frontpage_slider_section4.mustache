@@ -1,0 +1,29 @@
+{{#slider_foursection_enabled}}
+  <div id="mooveslideshow_foursection" class="carousel slide" data-ride="carousel">
+    <ul class="carousel-indicators">
+      {{#slides_foursection}}
+        <li data-target="#mooveslideshow_foursection" data-slide-to="{{{ key }}}" {{#active}}class="active"{{/active}}></li>
+      {{/slides_foursection}}
+    </ul>
+    <div class="carousel-inner">
+      {{#slides_foursection}}
+        <div class="carousel-item {{#active}}active{{/active}}" data-link = "{{ imgurl }}">
+          <img class="d-block w-100 animated fadeIn" src="{{{ image }}}" alt="{{{ slidercap }}}">
+          <div class="carousel-caption d-none d-md-block animated fadeInRightBig">
+            {{#title}}<h2 class="title">{{{ title }}}</h2>{{/title}}
+
+            {{#caption}}<div class="caption">{{{ caption }}}</div>{{/caption}}
+          </div>
+        </div>
+      {{/slides_foursection}}
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#mooveslideshow_foursection" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#mooveslideshow_foursection" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+{{/slider_foursection_enabled}}

@@ -1,0 +1,31 @@
+/*Alertas de rendimiento pie de página del debug*/
+.performanceinfo.siteinfo.container-fluid{
+    text-align: left !important;
+}
+
+.performanceinfo.siteinfo.container-fluid ul li{
+    font-size: 0.9rem !important;
+    margin: 0%;
+}
+
+.performanceinfo.siteinfo.container-fluid .cache-definition-stats.list-unstyled.m-l-1.m-b-1{
+    margin: 0% !important;
+    width: 100%;
+}
+
+.performanceinfo.siteinfo.container-fluid ul .bg-dark,
+.performanceinfo.siteinfo.container-fluid ul .hihits,
+.performanceinfo.siteinfo.container-fluid ul .lowhits,
+.performanceinfo.siteinfo.container-fluid ul .nohits{
+    float: left !important;
+    padding: 0% !important;
+    width: 100%;
+    text-align: left;
+}
+
+.contact_li {
+
+    a {
+        color: white;
+    }
+}

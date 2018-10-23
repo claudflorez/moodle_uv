@@ -17,3 +17,10 @@
 @import "moove/btnapp";
 @import "moove/calendar";
 @import "moove/responsive";
+
+/*Enlazar archivos de personalización css uv*/
+@import "mooveuv/footer";
+@import "mooveuv/frontpage";
+@import "mooveuv/btnapp.scss";
+@import "mooveuv/messages.scss";
+@import "mooveuv/_responsive.scss";
