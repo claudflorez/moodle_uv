@@ -39,6 +39,7 @@ echo $OUTPUT->doctype();
     echo $OUTPUT->standard_head_html();
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
     <!-- Google web fonts -->
     <?php require_once(\theme_essential_uv\toolbox::get_tile_file('fonts')); ?>
     <!-- iOS Homescreen Icons -->

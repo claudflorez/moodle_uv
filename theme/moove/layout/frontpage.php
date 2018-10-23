@@ -33,116 +33,95 @@ $extraclasses = [];
 
 $themesettings = new \theme_moove\util\theme_settings();
 
-if (isloggedin()) {
-    $blockshtml = $OUTPUT->blocks('side-pre');
-    $hasblocks = strpos($blockshtml, 'data-block=') !== false;
+$sliderfrontpage = false;
+$slider_foursection = false;
 
-    $navdraweropen = (get_user_preferences('drawer-open-nav', 'true') == 'true');
-    $draweropenright = (get_user_preferences('sidepre-open', 'true') == 'true');
-
-    if ($navdraweropen) {
-        $extraclasses[] = 'drawer-open-left';
-    }
-
-    if ($draweropenright && $hasblocks) {
-        $extraclasses[] = 'drawer-open-right';
-    }
-
-    $bodyattributes = $OUTPUT->body_attributes($extraclasses);
-    $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
-    $templatecontext = [
-        'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-        'output' => $OUTPUT,
-        'sidepreblocks' => $blockshtml,
-        'hasblocks' => $hasblocks,
-        'bodyattributes' => $bodyattributes,
-        'hasdrawertoggle' => true,
-        'navdraweropen' => $navdraweropen,
-        'draweropenright' => $draweropenright,
-        'regionmainsettingsmenu' => $regionmainsettingsmenu,
-        'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
-    ];
-
-    // Improve boost navigation.
-    theme_moove_extend_flat_navigation($PAGE->flatnav);
-
-    $templatecontext['flatnavigation'] = $PAGE->flatnav;
-
-    $templatecontext = array_merge($templatecontext, $themesettings->footer_items(), $themesettings->slideshow());
-
-    echo $OUTPUT->render_from_template('theme_moove/frontpage', $templatecontext);
-} else {
-    $sliderfrontpage = false;
-    if ((theme_moove_get_setting('sliderenabled', true) == true) && (theme_moove_get_setting('sliderfrontpage', true) == true)) {
-        $sliderfrontpage = true;
-        $extraclasses[] = 'slideshow';
-    }
-
-    $numbersfrontpage = false;
-    if (theme_moove_get_setting('numbersfrontpage', true) == true) {
-        $numbersfrontpage = true;
-    }
-
-    $sponsorsfrontpage = false;
-    if (theme_moove_get_setting('sponsorsfrontpage', true) == true) {
-        $sponsorsfrontpage = true;
-    }
-
-    $clientsfrontpage = false;
-    if (theme_moove_get_setting('clientsfrontpage', true) == true) {
-        $clientsfrontpage = true;
-    }
-
-    $bannerheading = '';
-    if (!empty($PAGE->theme->settings->bannerheading)) {
-        $bannerheading = theme_moove_get_setting('bannerheading', true);
-    }
-
-    $bannercontent = '';
-    if (!empty($PAGE->theme->settings->bannercontent)) {
-        $bannercontent = theme_moove_get_setting('bannercontent', true);
-    }
-
-    $shoulddisplaymarketing = false;
-    if (theme_moove_get_setting('displaymarketingbox', true) == true) {
-        $shoulddisplaymarketing = true;
-    }
-
-    $bodyattributes = $OUTPUT->body_attributes($extraclasses);
-    $regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
-
-    $templatecontext = [
-        'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
-        'output' => $OUTPUT,
-        'bodyattributes' => $bodyattributes,
-        'hasdrawertoggle' => false,
-        'cansignup' => $CFG->registerauth == 'email' || !empty($CFG->registerauth),
-        'bannerheading' => $bannerheading,
-        'bannercontent' => $bannercontent,
-        'shoulddisplaymarketing' => $shoulddisplaymarketing,
-        'sliderfrontpage' => $sliderfrontpage,
-        'numbersfrontpage' => $numbersfrontpage,
-        'sponsorsfrontpage' => $sponsorsfrontpage,
-        'clientsfrontpage' => $clientsfrontpage
-    ];
-
-    $templatecontext = array_merge($templatecontext, $themesettings->footer_items(), $themesettings->marketing_items());
-
-    if ($sliderfrontpage) {
-        $templatecontext = array_merge($templatecontext, $themesettings->slideshow());
-    }
-
-    if ($numbersfrontpage) {
-        $templatecontext = array_merge($templatecontext, $themesettings->numbers());
-    }
-
-    if ($sponsorsfrontpage) {
-        $templatecontext = array_merge($templatecontext, $themesettings->sponsors());
-    }
-
-    if ($clientsfrontpage) {
-        $templatecontext = array_merge($templatecontext, $themesettings->clients());
-    }
-
-    echo $OUTPUT->render_from_template('theme_moove/frontpage_guest', $templatecontext);
+if ((theme_moove_get_setting('sliderenabled', true) == true) && (theme_moove_get_setting('sliderfrontpage', true) == true)) {
+    $sliderfrontpage = true;
+    $extraclasses[] = 'slideshow';
 }
+
+if(theme_moove_get_setting('slider_foursection_enabled', true) == true){
+    $slider_foursection = true;
+}
+
+$numbersfrontpage = false;
+if (theme_moove_get_setting('numbersfrontpage', true) == true) {
+    $numbersfrontpage = true;
+}
+
+$sponsorsfrontpage = false;
+if (theme_moove_get_setting('sponsorsfrontpage', true) == true) {
+    $sponsorsfrontpage = true;
+}
+
+$clientsfrontpage = false;
+if (theme_moove_get_setting('clientsfrontpage', true) == true) {
+    $clientsfrontpage = true;
+}
+
+$bannerheading = '';
+if (!empty($PAGE->theme->settings->bannerheading)) {
+    $bannerheading = theme_moove_get_setting('bannerheading', true);
+}
+
+$bannercontent = '';
+if (!empty($PAGE->theme->settings->bannercontent)) {
+    $bannercontent = theme_moove_get_setting('bannercontent', true);
+}
+
+$shoulddisplaymarketing = false;
+if (theme_moove_get_setting('displaymarketingbox', true) == true) {
+    $shoulddisplaymarketing = true;
+}
+
+$bodyattributes = $OUTPUT->body_attributes($extraclasses);
+$bodyattributes = substr($bodyattributes, 0, -1);
+$bodyattributes .= " notloggedin\"";
+$regionmainsettingsmenu = $OUTPUT->region_main_settings_menu();
+
+$img_header = theme_moove_get_setting('headerimg', true) ;
+
+$templatecontext = [
+    'platform_access_moove' => get_string('platform_access_moove', 'theme_moove'),
+    'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+    'output' => $OUTPUT,
+    'bodyattributes' => $bodyattributes,
+    'hasdrawertoggle' => false,
+    'cansignup' => $CFG->registerauth == 'email' || !empty($CFG->registerauth),
+    'bannerheading' => $bannerheading,
+    'bannercontent' => $bannercontent,
+    'shoulddisplaymarketing' => $shoulddisplaymarketing,
+    'sliderfrontpage' => $sliderfrontpage,
+    'numbersfrontpage' => $numbersfrontpage,
+    'sponsorsfrontpage' => $sponsorsfrontpage,
+    'clientsfrontpage' => $clientsfrontpage,
+
+    'slider_foursection_enabled' => $slider_foursection,
+    'isloggedin' => isloggedin()
+];
+
+$templatecontext = array_merge($templatecontext, $themesettings->footer_items(), $themesettings->marketing_items());
+
+if ($sliderfrontpage) {
+    $templatecontext = array_merge($templatecontext, $themesettings->slideshow());
+}
+
+if($slider_foursection){
+    $templatecontext = array_merge($templatecontext, $themesettings->slide_foursection_show());
+}
+
+if ($numbersfrontpage) {
+    $templatecontext = array_merge($templatecontext, $themesettings->numbers());
+}
+
+if ($sponsorsfrontpage) {
+    $templatecontext = array_merge($templatecontext, $themesettings->sponsors());
+}
+
+if ($clientsfrontpage) {
+    $templatecontext = array_merge($templatecontext, $themesettings->clients());
+}
+
+echo $OUTPUT->render_from_template('theme_moove/frontpage_guest', $templatecontext);
+

@@ -1,0 +1,123 @@
+<!--
+    This file is part of Moodle - http://moodle.org/
+
+    Moodle is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Moodle is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<!--
+    @template theme_essential_uv/columns2
+
+    Admin time setting template.
+
+    Moove 2 column layout template.
+
+    Context variables required for this template:
+    * sitename - The name of the site
+    * output - The core renderer for the page
+    * bodyattributes - attributes for the body tag as a string of html attributes
+    * sidepreblocks - HTML for the blocks
+    * hasblocks - true if there are blocks on this page
+    * navdraweropen - true if the nav drawer should be open on page load
+    * regionmainsettingsmenu - HTML for the region main settings menu
+    * hasregionmainsettingsmenu - There is a region main settings menu on this page.
+
+    Example context (json):
+    {
+        "sitename": "Moodle",
+        "output": {
+            "doctype": "<!DOCTYPE html>",
+            "page_title": "Test page",
+            "favicon": "favicon.ico",
+            "main_content": "<h1>Headings make html validators happier</h1>"
+         },
+        "bodyattributes":"",
+        "sidepreblocks": "<h2>Blocks html goes here</h2>",
+        "hasblocks":true,
+        "navdraweropen":true,
+        "regionmainsettingsmenu": "",
+        "hasregionmainsettingsmenu": false
+    }
+-->
+    {{>theme_essential_uv/inc_start}}
+
+    <div id="page" class="container-fluid">
+
+        <div id="page-top-header" class="clearfix">
+            <div id="page-navbar" class="clearfix row-fluid">
+                <div class="breadcrumb-nav span9">
+                    {{{ left_nav_bar }}}
+                </div>
+                <nav class="breadcrumb-button span3">
+                    {{{ page_heading_button }}}
+                </nav>
+            </div>
+            {{{ page_top_header }}}
+        </div>
+
+        {{{ essential_uv_blocks_1 }}}
+        
+        <div id="page-content" class="row-fluid">
+            <div id="main-and-pre" class="span12">
+                <div class="row-fluid">
+                {{#pagebottomregion}}
+                    <div id="content" class="span12">
+                {{/pagebottomregion}}
+                {{^pagebottomregion}}
+                    {{#hasboringlayout}}
+                        {{#left}}
+                            <div id="content" class="span9 pull-right">
+                        {{/left}}
+                        {{^left}}
+                        {{/left}}
+                    {{/hasboringlayout}}
+                    {{^hasboringlayout}}
+                        {{#left}}
+                            <div id="content" class="span9">    
+                        {{/left}}
+                        {{^left}}
+                            <div id="content" class="span9 pull-right">
+                        {{/left}}
+                    {{/hasboringlayout}}
+                {{/pagebottomregion}}
+                    {{{ essential_uv_blocks_2 }}}
+                    <section id="region-main">
+                        {{{course_title}}}
+                        {{{course_content_header}}}
+                        {{{ output.main_content }}}
+
+                    </section>
+                </div>
+                {{#hasboringlayout}}
+                        {{#left}}
+                            {{{essential_uv_blocks_3}}}
+                        {{/left}}
+                        {{^left}}
+                            {{{essential_uv_blocks_4}}}
+                        {{/left}}
+                    {{/hasboringlayout}}
+                    {{^hasboringlayout}}
+                        {{#left}}
+                            {{{essential_uv_blocks_4}}}
+                        {{/left}}
+                        {{^left}}
+                            {{{essential_uv_blocks_3}}}
+                        {{/left}}
+                    {{/hasboringlayout}}
+            </div>
+        </div>
+    </div>    
+
+    {{>theme_essential_uv/inc_end}}
+
+
+        

@@ -50,12 +50,22 @@ class theme_settings {
 
         $footersettings = [
             'facebook', 'twitter', 'googleplus', 'linkedin', 'youtube', 'instagram', 'getintouchcontent',
-            'website', 'mobile', 'mail'
+            'gettitlestayintouch', 'website', 'mobile', 'mail', 'address'
         ];
 
         foreach ($footersettings as $setting) {
             if (!empty($theme->settings->$setting)) {
                 $templatecontext[$setting] = $theme->settings->$setting;
+            }
+        }
+
+        $footericons = [
+            'facebook_icon', 'twitter_icon', 'youtube_icon'
+        ];
+
+        foreach ($footericons as $icon) {
+            if (!empty($theme->settings->$setting)) {
+                $templatecontext[$icon] = $theme->setting_file_url($icon, $icon);
             }
         }
 
@@ -145,7 +155,7 @@ class theme_settings {
 
             $templatecontext[$marketingcontent] = '';
             if (!empty($theme->settings->$marketingcontent)) {
-                $templatecontext[$marketingcontent] = theme_moove_get_setting($marketingcontent, true);
+                $templatecontext[$marketingcontent] = theme_moove_get_setting($marketingcontent, 'format_html');
             }
 
             $templatecontext[$marketingurl] = '';
@@ -230,5 +240,50 @@ class theme_settings {
         }
 
         return $templatecontext;
+    }
+
+    /**
+     * Get config theme slideshow for foursection
+     *
+     * @return array
+     */
+    public function slide_foursection_show(){
+        global $OUTPUT;
+
+        $theme = theme_config::load('moove');
+
+        $templatecontext['slider_foursection_enabled'] = $theme->settings->slider_foursection_enabled;
+
+        if (empty($templatecontext['slider_foursection_enabled'])) {
+            return $templatecontext;
+        }
+
+        $slider_foursection_count = $theme->settings->slider_foursection_count;
+
+        for ($i = 1, $j = 0; $i <= $slider_foursection_count; $i++, $j++) {
+            $sliderimage = "slider_foursection_image{$i}";
+            $slidertitle = "slider_foursection_title{$i}";
+            $slidercap = "slider_foursection_cap{$i}";
+            $imgurl = "slider_foursection_imageurl{$i}";
+
+            $templatecontext['slides_foursection'][$j]['key'] = $j;
+            $templatecontext['slides_foursection'][$j]['active'] = false;
+
+            $image = $theme->setting_file_url($sliderimage, $sliderimage);
+            if (empty($image)) {
+                $image = $OUTPUT->image_url('slide_default', 'theme');
+            }
+            $templatecontext['slides_foursection'][$j]['image'] = $image;
+            $templatecontext['slides_foursection'][$j]['title'] = $theme->settings->$slider_foursection_title;
+            $templatecontext['slides_foursection'][$j]['caption'] = $theme->settings->$slider_foursection_cap;
+            $templatecontext['slides_foursection'][$j]['imgurl'] = $theme->settings->$imgurl;
+
+            if ($i === 1) {
+                $templatecontext['slides_foursection'][$j]['active'] = true;
+            }
+        }
+
+        return $templatecontext;
+
     }
 }

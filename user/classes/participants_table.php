@@ -201,11 +201,13 @@ class participants_table extends \table_sql {
         }
 
         // Agregar columna último acceso al CVUV
-        if (!isset($hiddenfields['lastaccess'])) {
-            if ($courseid != SITEID) {
-                $headers[] = get_string('lastaccess')." CV";
-                $columns[] = 'ultimo_acceso';
+        if (!isset($hiddenfields['lastsiteaccess'])) {
+            if ($courseid == SITEID) {
+                $headers[] = get_string('lastsiteaccess');
+            } else {
+                $headers[] = get_string('lastaccess').' al CVUV';
             }
+            $columns[] = 'lastsiteaccess';
         }
 
 
@@ -369,9 +371,9 @@ class participants_table extends \table_sql {
     * @param \stdClass $data
     * @return string
     */
-    public function col_ultimo_acceso($data) {
-        if ($data->lastaccess) {
-            return format_time(time() - $data->ultimo_acceso);
+    public function col_lastsiteaccess($data) {
+        if ($data->lastsiteaccess) {
+            return format_time(time() - $data->lastsiteaccess);
         }
         return get_string('never');
     }
