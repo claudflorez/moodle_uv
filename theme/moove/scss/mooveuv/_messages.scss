@@ -36,35 +36,23 @@
 .messaging-area-container .messaging-area .messages-area .messages .message .content.right{
     background: #ebebeb none repeat scroll 0 0;
     border-radius: 3px;
-    color: #2c3f4c !important;
+    color: #646464;
     font-size: 14px;
     padding: 5px 10px 5px 12px;
-    width: 80%;
+    width: 100%;
 
 }
 
 .messaging-area-container .messaging-area .messages-area .messages .message .content.left{
-    background: #eef5f9 none repeat scroll 0 0;
+    background: #cd1f32 none repeat scroll 0 0;
     border-radius: 3px;
     font-size: 14px;
-    color:#2c3f4c !important;
+    color: #fff;
     padding: 5px 10px 5px 12px;
-    width: 80%;
+    width: 100%;
 }
 
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container{
-  padding: 0% !important;
-}
-
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container .content-item-body{
-  padding: 2%;
-}
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container h3 {
-  font-size: 0.9rem !important;
-  color: #cd1f32;
-}
-
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container p {
-  font-size: 0.75rem;
-  color: #373a3c !important;
+.messaging-area-container .messaging-area .messages-area .messages .message .content.left span{
+    color: #fff;
+    font-weight: bold;
 }
