@@ -3,3 +3,8 @@
     margin-right: auto;
     width:90% !important;
 }
+
+
+.alert.alert-warning h3{
+	font-size: 1.2rem !important;
+}

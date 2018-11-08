@@ -5,8 +5,9 @@
 	 **/
 	require('../../config.php');
 
-	global $USER;
 
+	global $USER;
+	$PAGE->requires->css('/course/delete_course_old/css/style.css');
 	require_login();
 	//creamos los encabezados de la tabla
     $table = new html_table();
