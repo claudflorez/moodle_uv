@@ -56,7 +56,10 @@
             {{>theme_moove/mydashboard_admin}}
         {{/is_siteadmin}}
         {{^is_siteadmin}}
-            {{{ output.full_header }}}
+            <!--{{{ output.full_header }}}-->
+            <!-- Bloque personalizado para el dashboard de los usuarios Funcińa agregada en output/core_render.php-->
+            {{{ output.mydashboard_user_header }}}
+
         {{/is_siteadmin}}
 
         <div id="page-content" class="row">
@@ -68,6 +71,7 @@
                 {{/hasregionmainsettingsmenu}}
                 <section id="region-main">
                     <div class="card">
+                    {{{ output.alert_delete_courses }}}
                         <div class="card-body">
                             {{#hasregionmainsettingsmenu}}
                                 <div class="region_main_settings_menu_proxy"></div>
@@ -81,5 +85,7 @@
             </div>
         </div>
     </div>
+    
+    
 
     {{>theme_moove/inc_end}}

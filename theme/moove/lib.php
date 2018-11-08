@@ -328,5 +328,52 @@ function theme_moove_rebuildcoursesections(\flat_navigation $flatnav) {
         $flatnav->remove($mycourses->key);
 
         $flatnav->add($mycourses, 'privatefiles');
+    } 
+}
+
+/**
+ * Order items of navigation menu, delete others
+ * @param flat_navigation $flatnav
+ * Diego Ruiz
+ */
+function order_flat_navigation(\flat_navigation $flatnav){
+  //Orden correcto que exigió diseño  
+  $correct_order = [
+      1 => 'home',
+      2 => 'myhome',
+      3 => 'sitesettings',
+      4 => 'participants',
+      5 => 'grades',
+      6 => 'mycourses',
+      7 => 'privatefiles',
+      8 => 'calendar',
+      9 => 'course-sections',
+      10 => 'addblock'
+    ];
+    
+    //Arreglo para almacenar temporalmente los items que se van eliminar del arreglo principal
+    $flatnav_aux = [];
+
+    //Almacenamiento en array temporal con el key adecuado y eliminacion del principal
+    foreach ($flatnav as $item) {
+      if (in_array($item->key, $correct_order)) {
+        foreach($correct_order as $key => $order){
+          if($item->key == $order){
+            $flatnav_aux[$key] = $item;
+          }
+        }
+        $flatnav->remove($item->key);
+      }
     }
+    //Ordenar el array temporal por key
+    ksort($flatnav_aux);
+
+    //Ingresar nuevamente los items al array principal
+    foreach ($flatnav_aux as $key => $new_item) {
+      $flatnav->add($new_item, $new_item->key);
+    }
+
+    //Eliminación de items que no se incluían en el diseño
+    $flatnav->remove('badgesview');
+    $flatnav->remove('competencies');
 }

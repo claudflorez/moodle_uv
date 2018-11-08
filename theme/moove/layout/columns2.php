@@ -69,6 +69,8 @@ $templatecontext = [
 // Improve boost navigation.
 theme_moove_extend_flat_navigation($PAGE->flatnav);
 
+order_flat_navigation($PAGE->flatnav);
+
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 
 $themesettings = new \theme_moove\util\theme_settings();

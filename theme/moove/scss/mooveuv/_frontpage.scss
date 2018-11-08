@@ -28,3 +28,416 @@
 #mooveslideshow_foursection{
     cursor: pointer;
 }
+
+/*** Slider Principal y el login - Responsive del home ***/
+#page-header-uv {
+  padding: 0%;
+  #loginbox-uv{
+    padding: 0;
+    opacity: 0.94;
+    width: 38%;
+    margin-top: 5%;
+    position: absolute; left: 60%; top: 7%; z-index: 2;
+    #boxForm {
+      color: #5a5a5a;
+      background-color: #fff;
+      margin: 0;
+      opacity: 1;
+      text-align: left;
+      width: 100%;
+
+      h3 {
+          margin-top: 0;
+          font-size: 1.4rem;
+      }
+
+      label {
+          font-size: 1.2rem;
+          margin-bottom: .1rem;
+      }
+
+      .input-group {
+          margin-bottom: 10px;
+
+          input,
+          .input-group-addon {
+              -webkit-border-radius: 0;
+              -moz-border-radius: 0;
+              border-radius: 0;
+          }
+
+          input {
+              height: 40px;
+              font-size: 1.2rem;
+          }
+
+          .input-group-addon {
+              width: 40px;
+              height: 40px;
+              line-height: 30px;
+              padding: 4px 10px;
+              margin-bottom: 0;
+              font-size: 1rem;
+              font-weight: 400;
+              color: #55595c;
+              text-align: center;
+              background-color: #eceeef;
+              border: 1px solid rgba(0,0,0,.15);
+              border-right: 0;
+          }
+      }
+
+      .sign-up-btn {
+          .btn {
+              background-color: $brand-primary;
+              padding: 10px 20px;
+              margin-left: 0;
+              font-size: 1.3rem;
+              -webkit-border-radius: 0;
+              -moz-border-radius: 0;
+              border-radius: 0;
+          }
+      }
+
+      p {
+          text-shadow: none;
+          margin-top: 14px;
+          a {
+              text-decoration: none;
+              color: $brand-primary;
+              font-size: 1.0rem;
+          }
+      }
+
+      .btn-register {
+          margin: 0;
+          width: 100%;
+          -webkit-border-radius: 0;
+          -moz-border-radius: 0;
+          border-radius: 0;
+      }
+    }
+  }
+}
+
+.frontpage-marketing.row{
+  .col-lg-3.col-md-3.d-flex{
+    .card{
+      width: 100%;
+      .card-body{
+        .ver-mas{
+          color: black;
+          text-align: right;
+          padding: 1rem 0.3rem;
+
+          a{
+            background: #cd1f32;
+            color: white !important;
+          }
+        }
+      }
+    }
+    h2{
+      color: #2C4252 !important;
+    }
+    p{
+      color: #6A6C6D !important;
+    }
+    a{
+      color: #CD1F32 !important;
+    }
+  }
+}
+
+#frontpage-course-list{
+  .col-md-4.offset-md-4.div-section-title{
+    h3{
+      color: #2C4252;
+      font-weight: bold;
+    }
+  }
+  #frontpage-opencourses-list{
+    .col-md-2.d-flex.align-items-stretch{
+      .card{
+        width: 100%;
+      }
+    }
+  }
+} 
+
+@media (max-width: 1199px){
+  /** Header y login **/
+  #page-header-uv {
+    #loginbox-uv{
+      width: 45%;
+      margin-top: 3%;
+      position: absolute; left: 54%; top: 8%; z-index: 2;
+      #boxForm { 
+        h3 {
+            font-size: 1.3rem;
+        }
+  
+        label {
+            font-size: 1.0rem;
+            margin-bottom: .1rem;
+        }
+  
+        .input-group {
+            margin-bottom: 5px;
+  
+            input {
+                height: 35px;
+                font-size: 1.2rem;
+            }
+  
+            .input-group-addon {
+                width: 40px;
+                height: 35px;
+                line-height: 30px;
+                padding: 3px 7px;
+                margin-bottom: 0;
+                font-size: 0.8rem;
+                font-weight: 350;
+            }
+        }
+  
+        .sign-up-btn {
+            .btn {
+                padding: 5px 15px;
+                margin-left: 0;
+                font-size: 1.1rem;
+            }
+        }
+  
+        p {
+            text-shadow: none;
+            margin-top: 12px;
+            a {
+                font-size: 0.8rem;
+            }
+        }
+      }
+    }
+  } 
+
+  /** Marketing **/
+  .frontpage-marketing.row{
+    .col-lg-3.col-md-3.d-flex{
+      flex: 0 0 33.3%;
+      max-width: 33.3%;
+      margin-bottom: 5px;
+    }
+  }
+
+  /** Lista de cursos **/
+  #frontpage-course-list{
+    #frontpage-opencourses-list{
+      .col-md-2.d-flex.align-items-stretch{
+        flex: 0 0 25%;
+        max-width: 25%;
+        margin-bottom: 5px;
+      }
+  
+    }
+  }
+}
+
+@media (max-width: 979px){
+  /** Header y login **/
+  #page-header-uv {
+    #loginbox-uv{
+      width: 50%;
+      margin-top: 5%;
+      position: absolute; left: 58%; top: 5%; z-index: 2;
+      #boxForm { 
+        h3 {
+            font-size: 1.1rem;
+        }
+  
+        label {
+            font-size: 0.8rem;
+            margin-bottom: .05rem;
+        }
+  
+        .input-group {
+            margin-bottom: 3px;
+  
+            input {
+                height: 30px;
+                font-size: 1.0rem;
+            }
+  
+            .input-group-addon {
+                width: 40px;
+                height: 30px;
+                line-height: 30px;
+                padding: 2px 5px;
+                margin-bottom: 0;
+                font-size: 0.8rem;
+                font-weight: 300;
+            }
+        }
+  
+        .sign-up-btn {
+            .btn {
+                padding: 2px 10px;
+                margin-left: 0;
+                font-size: 0.9rem;
+            }
+        }
+  
+        p {
+            text-shadow: none;
+            margin-top: 8px;
+            a {
+                font-size: 0.7rem;
+            }
+        }
+      }
+    }
+  }
+  
+  /** Marketing **/
+  .frontpage-marketing.row{
+    .col-lg-3.col-md-3.d-flex{
+      flex: 0 0 50%;
+      max-width: 50%;
+    }
+  }
+
+  /** Lista de cursos **/
+  #frontpage-course-list{
+    #frontpage-opencourses-list{
+      .col-md-2.d-flex.align-items-stretch{
+        flex: 0 0 33.3%;
+        max-width: 33.3%;
+      }
+
+      h4{
+        font-size: 1rem;
+      }
+  
+    }
+  }
+}
+
+@media (max-width: 779px){
+  /** Header y login **/
+  #page-header-uv {
+    #loginbox-uv{
+      top: -15px;
+      left: 0;
+      position: relative;
+      width: 100%;
+      #boxForm { 
+        width: 80%;
+        margin: auto;
+        h3 {
+            font-size: 1.4rem;
+        }
+  
+        label {
+            font-size: 1rem;
+            margin-bottom: .1rem;
+        }
+  
+        .input-group {
+            margin-bottom: 3px;
+  
+            input {
+                height: 40px;
+                font-size: 1.0rem;
+            }
+  
+            .input-group-addon {
+                width: 40px;
+                height: 40px;
+                line-height: 30px;
+                padding: 5px 10px;
+                margin-bottom: 0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+        }
+  
+        .sign-up-btn {
+            .btn {
+                padding: 5px 15px;
+                margin-left: 0;
+                font-size: 1.1rem;
+            }
+        }
+  
+        p {
+            text-shadow: none;
+            margin-top: 8px;
+            a {
+                font-size: 0.9rem;
+            }
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 620px){
+  #page-header-uv {
+    #loginbox-uv{
+      #boxForm { 
+        width: 90%;
+      }
+    }
+  }
+  
+  /** Marketing **/
+  .frontpage-marketing.row{
+    .col-lg-3.col-md-3.d-flex{
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
+
+  /** Lista de cursos **/
+  #frontpage-course-list{
+    #frontpage-opencourses-list{
+      .col-md-2.d-flex.align-items-stretch{
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px){
+
+  #page-header-uv {
+    #loginbox-uv{
+      #boxForm { 
+        h3 {
+          font-size: 1.1rem;
+        }
+
+        p {
+          text-shadow: none;
+          margin-top: 6px;
+          a {
+              font-size: 0.65rem;
+          }
+        }
+      }
+    }
+  } 
+
+  /** Lista de cursos **/
+  #frontpage-course-list{
+    #frontpage-opencourses-list{
+      .col-md-2.d-flex.align-items-stretch{
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+

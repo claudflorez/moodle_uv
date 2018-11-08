@@ -126,7 +126,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
         } else if ($pageheadingbutton) {
             $html .= html_writer::div($pageheadingbutton, 'breadcrumb-button nonavbar pull-xs-right m-r-1');
         }
-
         $html .= html_writer::end_div(); // End .row.
         $html .= html_writer::end_div(); // End .col-xs-12.
 
@@ -713,4 +712,133 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         return $output;
     }
+
+    /**
+     * Wrapper for header elements.
+     *
+     * Author: Diego Fdo ruiz
+     * 
+     * @return string HTML to display the main header.
+     * 
+     */
+    public function mydashboard_user_header(){
+      global $CFG;
+      $img_path = $CFG->wwwroot . '/theme/moove/pix/dintev/';
+      $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'row'));
+      $html .= html_writer::start_tag('div', array('class' => 'col-12 pt-3 pb-3'));
+      $html .= html_writer::start_tag('div', array('class' => 'card'));
+      $html .= html_writer::start_tag('div', array('class' => 'card-body'));
+
+      $html .= html_writer::start_tag('div', array('class' => 'd-flex'));
+      $html .= html_writer::start_tag('div', array('class' => 'mr-auto'));
+      $html .= $this->context_header();
+      //$html .= $this->page_heading_button();
+      $html .= html_writer::end_tag('div');//Fin de tag div.mr-auto
+      $html .= html_writer::end_tag('div');//Fin de tag div.d-flex
+
+      //Bloque para links de dashboard de los usuarios
+      $html .= html_writer::start_tag('div', array('class' => 'row'));
+      //Biblioteca
+      $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
+      $html .= html_writer::start_tag('a', array('href' => 'http://biblioteca.univalle.edu.co/', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
+      $html .= 'Biblioteca';
+      $html .= html_writer::start_tag('img', array('src'=>$img_path.'iconos_bloquesuperior_biblioteca.png', 'class'=>'img-user-header'));
+      $html .= html_writer::end_tag('a');
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-md-3
+      //Correo 
+      $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
+      $html .= html_writer::start_tag('a', array('href' => 'https://www.univalle.edu.co/index.php/correo-electronico-institucional', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
+      $html .= 'Correo';
+      $html .= html_writer::end_tag('br');//Fin de tag br
+      $html .= 'Institucional';
+      $html .= html_writer::start_tag('img', array('src'=>$img_path.'iconos_bloquesuperior_correoe.png', 'class'=>'img-user-header'));
+      $html .= html_writer::end_tag('a');
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-md-3
+      //Reglamento
+      $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
+      $html .= html_writer::start_tag('a', array('href' => 'http://secretariageneral.univalle.edu.co/consejo-superior/reglamento-estudiantil/index.html', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
+      $html .= 'Reglamento';
+      $html .= html_writer::start_tag('img', array('src'=>$img_path.'iconos_bloquesuperior_reglamento.png', 'class'=>'img-user-header'));
+      $html .= html_writer::end_tag('a');
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-md-3
+      //registro
+      $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
+      $html .= html_writer::start_tag('a', array('href' => 'http://registro.univalle.edu.co/', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
+      $html .= 'Registro';
+      $html .= html_writer::end_tag('br');//Fin de tag br
+      $html .= 'Académico';
+      $html .= html_writer::start_tag('img', array('src'=>$img_path.'iconos_bloquesuperior_registroacademico.png', 'class'=>'img-user-header'));
+      $html .= html_writer::end_tag('a');
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-md-3
+      //Bienestar
+      $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
+      $html .= html_writer::start_tag('a', array('href' => 'http://vicebienestar.univalle.edu.co/', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
+      $html .= 'Bienestar';
+      $html .= html_writer::end_tag('br');//Fin de tag br
+      $html .= 'Universitario';
+      $html .= html_writer::start_tag('img', array('src'=>$img_path.'iconos_bloquesuperior_bienestaru.png', 'class'=>'img-user-header'));
+      $html .= html_writer::end_tag('a');
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-md-3
+
+      $html .= html_writer::end_tag('div');//Fin de tag div.row --- Fin bloque links
+
+      $html .= html_writer::end_tag('div');//Fin de tag div.card-body
+      $html .= html_writer::end_tag('div');//Fin de tag div.card
+      $html .= html_writer::end_tag('div');//Fin de tag div.col-12
+      $html .= html_writer::end_tag('header');//Fin de tag header
+      return $html;
+    }
+
+    /**
+     * Buttons for personalize site.
+     *
+     * Author: Diego Fdo ruiz
+     * 
+     * @return string HTML to display the main header.
+     * 
+     */
+    public function page_personalize_buttons(){
+      $html = html_writer::start_tag('div', array('class' => 'personalize-buttons', 'id' => 'personalize-buttons'));
+      $html .= html_writer::end_tag('div');
+      $this->page->requires->js_call_amd('theme_moove/btn_in_course', 'init');
+      return $html;
+    }
+
+    /**
+     * Alert delete courses.
+     *
+     * Author: Diego Fdo ruiz
+     * 
+     * @return string HTML to display the mydashboard.
+     * 
+     */
+    public function alert_delete_courses(){
+      global $USER, $DB, $CFG;
+      $html = "";
+      $result=$DB->get_records_sql("SELECT
+                                      mdl_course.id
+                                    FROM
+                                      public.mdl_user,
+                                      public.mdl_role_assignments,
+                                      public.mdl_context,
+                                      public.mdl_course
+                                    WHERE
+                                      mdl_role_assignments.userid = mdl_user.id AND
+                                      mdl_role_assignments.contextid = mdl_context.id AND
+                                      mdl_context.instanceid = mdl_course.id And mdl_role_assignments.roleid='3' And mdl_user.id='$USER->id'");
+      $totalCursos=count($result);
+      $url_delete_courses = $CFG->wwwroot."/course/delete_course_old";
+      if($totalCursos > 0){
+        $html .= html_writer::start_tag('div', array('class' => 'alert alert-warning', 'id' => 'alert_delete_courses'));
+        $html .= html_writer::start_tag('h5');
+        $html .= "Si usted desea eliminar alguno de sus cursos, por favor dirijase a la sección ";
+        $html .= html_writer::start_tag('a', array('style' => 'color:#D51B23;', 'href' => $url_delete_courses));
+        $html .= "Eliminar Cursos";
+        $html .= html_writer::end_tag('a');
+        $html .= html_writer::end_tag('h5');
+        $html .= html_writer::end_tag('div');
+      }
+      return $html;
+    }
+
 }

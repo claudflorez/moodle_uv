@@ -382,7 +382,7 @@ class course_renderer extends \core_course_renderer {
         }
 
         $this->page->requires->js_call_amd('theme_moove/slider_section', 'init');
-
+        $this->page->requires->js_call_amd('theme_moove/iframe_video', 'init');
         $content .= $this->render_from_template('theme_moove/frontpage_courses', $templatecontext);
 
         return $content;
