@@ -337,6 +337,12 @@ function theme_moove_rebuildcoursesections(\flat_navigation $flatnav) {
  * Diego Ruiz
  */
 function order_flat_navigation(\flat_navigation $flatnav){
+
+  //Eliminación de items que no se incluían en el diseño
+  $flatnav->remove('badgesview');
+  $flatnav->remove('competencies');
+  $flatnav->remove('courseindexpage');
+
   //Orden correcto que exigió diseño  
   $correct_order = [
       1 => 'home',
@@ -372,8 +378,4 @@ function order_flat_navigation(\flat_navigation $flatnav){
     foreach ($flatnav_aux as $key => $new_item) {
       $flatnav->add($new_item, $new_item->key);
     }
-
-    //Eliminación de items que no se incluían en el diseño
-    $flatnav->remove('badgesview');
-    $flatnav->remove('competencies');
 }
