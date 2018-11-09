@@ -1,3 +1,7 @@
+#page-course-delete_course_old-index #my-btn{
+	background-color: blue;
+}
+
 .generaltable{
     margin-left: auto;
     margin-right: auto;
@@ -8,3 +12,4 @@
 .alert.alert-warning h3{
 	font-size: 1.2rem !important;
 }
+

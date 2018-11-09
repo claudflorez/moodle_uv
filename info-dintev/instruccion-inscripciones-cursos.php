@@ -1,6 +1,5 @@
 <?php
 	require('../config.php');
-	$PAGE->requires->css('/info-dintev/styles.css');
 	$PAGE->set_title('Instrucciones Inscripción Cursos');
 	$PAGE->set_heading(" ");
 	$PAGE->navbar->add("Instrucciones Inscripción Cursos en el Campus Virtual");
