@@ -35,7 +35,7 @@
 				</li>
 				<li style="text-align:justify;">Ingrese con su nombre de usuario (número de cédula) y contraseña (si está registrado como usuario en el Campus Virtual digite su contraseña actual, de lo contrario use la asignada por Registro Académico para registrar las notas del semestre anterior) y siga las instrucciones consignadas en el sistema para la inscripción de cursos.
 				</li>
-				<li style="text-align:justify;">Al inscribir un curso a través de esta interfaz, los estudiantes matriculados quedarán registrados automáticamente en el Campus Virtual. Después de confirmar la inscripción, el curso estará disponible en el Campus Virtual y podrá acceder a él a través de la página <a title="Campus Virtual Universidad del Valle" href="/moodle35" target="_blank">http://campusvirtual.univalle.edu.co</a>
+				<li style="text-align:justify;">Al inscribir un curso a través de esta interfaz, los estudiantes matriculados quedarán registrados automáticamente en el Campus Virtual. Después de confirmar la inscripción, el curso estará disponible en el Campus Virtual y podrá acceder a él a través de la página <a title="Campus Virtual Universidad del Valle" href="http://campusvirtual.univalle.edu.co" target="_blank">http://campusvirtual.univalle.edu.co</a>
 				</li>
 			</ol>
 			<strong>NOTA</strong>:
