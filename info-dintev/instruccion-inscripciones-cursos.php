@@ -23,11 +23,8 @@
 		<div>
 			<ul>
 				<li style="text-align:justify;">
-					<span style="font-size:small;">
-						<strong>Cursos que están registrados en el Sistema de Registro Académico</strong>
-					</span>
-					<span >&nbsp;&nbsp; (<em><strong>recomendamos leer completamente las instrucciones antes de hacer clic 	sobre cualquier enlace </strong></em>)
-					</span>
+					<strong>Cursos que están registrados en el Sistema de Registro Académico</strong><br>
+					(recomendamos leer completamente las instrucciones antes de hacer clic 	sobre cualquier enlace)
 				</li>
 			</ul>
 		</div>
@@ -38,7 +35,7 @@
 				</li>
 				<li style="text-align:justify;">Ingrese con su nombre de usuario (número de cédula) y contraseña (si está registrado como usuario en el Campus Virtual digite su contraseña actual, de lo contrario use la asignada por Registro Académico para registrar las notas del semestre anterior) y siga las instrucciones consignadas en el sistema para la inscripción de cursos.
 				</li>
-				<li style="text-align:justify;">Al inscribir un curso a través de esta interfaz, los estudiantes matriculados quedarán registrados automáticamente en el Campus Virtual. Después de confirmar la inscripción, el curso estará disponible en el Campus Virtual y podrá acceder a él a través de la página <a title="Campus Virtual Universidad del Valle" href="http://localhost/moodle" target="_blank">http://campusvirtual.univalle.edu.co</a>
+				<li style="text-align:justify;">Al inscribir un curso a través de esta interfaz, los estudiantes matriculados quedarán registrados automáticamente en el Campus Virtual. Después de confirmar la inscripción, el curso estará disponible en el Campus Virtual y podrá acceder a él a través de la página <a title="Campus Virtual Universidad del Valle" href="/moodle35" target="_blank">http://campusvirtual.univalle.edu.co</a>
 				</li>
 			</ol>
 			<strong>NOTA</strong>:
@@ -52,10 +49,10 @@
 			<p class="title-2">Para adicionar o eliminar estudiantes envíe un correo electrónico a la Administración del Campus Virtual
 				<a title="Correo electrónico Campus Virtual" href="mailto:campusvirtual@correounivalle.edu.co">campusvirtual@correounivalle.edu.co</a> 
 				anexando la información del curso, docente(s) y estudiantes en el formato de inscripción de cursos disponible en el siguiente enlace.
-				<a title="Formato de inscripción de cursos" href="../Formatos/Formato_creacion_cursos_CVUV.xls">Formato de inscripción de cursos</a>.
+				<a title="Formato de inscripción de cursos" href="Formatos/Formato_creacion_cursos_CVUV.xls">Formato de inscripción de cursos</a>.
 			</p> 
 			<ul>
-				<li><span style="font-size:small;">
+				<li><span>
 						<strong>Cursos de extensión o especiales como Diplomados, Seminarios, etc.</strong>
 					</span>
 				</li>
