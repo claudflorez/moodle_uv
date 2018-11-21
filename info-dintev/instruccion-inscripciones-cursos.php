@@ -33,18 +33,16 @@
 				<li style="text-align:justify;">Hacer clic en el enlace 
 					<a title="Inscripción de cursos en el Campus Virtual" href="https://campusvirtual.univalle.edu.co/InterfazRegistroACampus/" target="_blank">Interfaz Registro Académico a Campus Virtual Univalle.</a>
 				</li>
-				<li style="text-align:justify;">Ingrese con su nombre de usuario (número de cédula) y contraseña (si está registrado como usuario en el Campus Virtual ingrese su contraseña actual, de lo contrario use la asignada por Registro Académico para registrar las notas del semestre anterior) y siga las instrucciones consignadas en el sistema para la inscripción de cursos.
+				<li style="text-align:justify;">Ingrese con su nombre de usuario (número de cédula) y contraseña (si está registrado como usuario en el Campus Virtual escriba su contraseña actual, de lo contrario use la asignada por Registro Académico para registrar las notas del semestre anterior) y siga las instrucciones consignadas en el sistema para la inscripción de cursos.
 				</li>
 				<li style="text-align:justify;">Al inscribir un curso a través de esta interfaz, los estudiantes matriculados quedarán registrados automáticamente en el Campus Virtual. Después de confirmar la inscripción, el curso estará disponible en el Campus Virtual y podrá acceder a él a través de la página <a title="Campus Virtual Universidad del Valle" href="http://campusvirtual.univalle.edu.co" target="_blank">http://campusvirtual.univalle.edu.co</a>
 				</li>
-
-				<li style="text-align:justify;">Para adicionar o eliminar estudiantes envíe un correo electrónico a la Administración del Campus Virtual
+			</ol>
+			<p style="text-align:justify;">Para adicionar o eliminar estudiantes envíe un correo electrónico a la Administración del Campus Virtual
 				<a title="Correo electrónico Campus Virtual" href="mailto:campusvirtual@correounivalle.edu.co">campusvirtual@correounivalle.edu.co</a> 
 				anexando la información del curso, docente(s) y estudiantes en el formato de inscripción de cursos disponible en el siguiente enlace.
 				<a title="Formato de inscripción de cursos" href="Formatos/Formato_creacion_cursos_CVUV.xls">Formato de inscripción de cursos</a>.
-				</li>
-
-			</ol>
+				</p>
 			<strong>NOTA</strong>:
 				<div style="text-align:justify;">Si olvidó su contraseña, envíe un correo electrónico a la Administración del Campus Virtual&nbsp; con su número de cédula y nombres completos.<br><br>
 			</div>

@@ -92,14 +92,15 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 $currentlang = $strlang;
             }
             $this->language = $menu->add($currentlang, new moodle_url('#'), $strlang, 10000);
+
             foreach ($langs as $langtype => $langname) {
                 $this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
             }
-
+            
             foreach ($menu->get_children() as $item) {
                 $context = $item->export_for_template($this);
             }
-
+            
             if (isset($context)) {
                 return $this->render_from_template('theme_moove/lang_menu', $context);
             }
@@ -383,9 +384,10 @@ class core_renderer extends \theme_boost\output\core_renderer {
                 'meta mnet mnet-' . $mnet
             );
         }
-
+        $usernametext = $opts->metadata['userfullname'];
         $returnstr .= html_writer::span(
-            html_writer::span($usertextcontents, 'usertext') .
+            html_writer::span($usernametext, 'usernametext') .
+            //html_writer::span($usertextcontents, 'usertext') .
             html_writer::span($avatarcontents, $avatarclasses),
             'userbutton'
         );
@@ -840,5 +842,4 @@ class core_renderer extends \theme_boost\output\core_renderer {
       }
       return $html;
     }
-
 }
