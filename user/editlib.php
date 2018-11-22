@@ -422,6 +422,7 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
 
     $mform->addElement('text', 'department', get_string('department'), 'maxlength="255" size="25"');
     $mform->setType('department', core_user::get_property_type('department'));
+    $mform->addRule('department', 'Este campo es obligatorio', 'required', null, 'client');
 
     $mform->addElement('text', 'phone1', get_string('phone1'), 'maxlength="20" size="25"');
     $mform->setType('phone1', core_user::get_property_type('phone1'));
