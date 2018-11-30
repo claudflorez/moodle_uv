@@ -316,9 +316,9 @@ class core_renderer extends \theme_boost\output\core_renderer {
 
         // If logged in as a guest user, show a string to that effect.
         if (isguestuser()) {
-            $returnstr = get_string('loggedinasguest');
+            //$returnstr = get_string('loggedinasguest');
             if (!$loginpage && $withlinks) {
-                $returnstr .= " (<a href=\"$loginurl\">".get_string('login').'</a>)';
+                $returnstr .= " <a class=\"custon-btn-login btn btn-primary\" href=\"$loginurl\">".get_string('login').'</a>';
             }
 
             return html_writer::tag(
