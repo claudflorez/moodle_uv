@@ -1562,7 +1562,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         if (!$this->is_uservisible() || (!$this->id && !$recursive)) {
             return array();
         }
-
+                    
         $coursecatcache = cache::make('core', 'coursecat');
         $cachekey = 'l-'. $this->id. '-'. (!empty($options['recursive']) ? 'r' : '').
                  '-'. serialize($sortfields);
@@ -1570,7 +1570,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
 
         // Check if we have already cached results.
         $ids = $coursecatcache->get($cachekey);
-        if ($ids !== false) {
+        if (!empty($ids)) {
             // We already cached last search result and it did not expire yet.
             $ids = array_slice($ids, $offset, $limit);
             $courses = array();
@@ -1596,6 +1596,12 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         // Retrieve list of courses in category.
         $where = 'c.id <> :siteid';
         $params = array('siteid' => SITEID);
+        //Habilitar el conteo recursivo para las categorías que no se está realizando el conteo
+        $caterory_ids_for_count_courses = $this->categoriesIdsCountCourses();
+        if(in_array($this->id, $caterory_ids_for_count_courses) ) {
+            $recursive = true;
+        }
+
         if ($recursive) {
             if ($this->id) {
                 $context = context_coursecat::instance($this->id);
@@ -1608,7 +1614,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         }
         // Get list of courses without preloaded coursecontacts because we don't need them for every course.
         $list = $this->get_course_records($where, $params, array_diff_key($options, array('coursecontacts' => 1)), true);
-
+        
         // Sort and cache list.
         self::sort_records($list, $sortfields);
         $coursecatcache->set($cachekey, array_keys($list));
@@ -1646,7 +1652,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
     public function get_courses_count($options = array()) {
         $cntcachekey = 'lcnt-'. $this->id. '-'. (!empty($options['recursive']) ? 'r' : '');
         $coursecatcache = cache::make('core', 'coursecat');
-        if (($cnt = $coursecatcache->get($cntcachekey)) === false) {
+        if (($cnt = $coursecatcache->get($cntcachekey)) == false) {
             // Cached value not found. Retrieve ALL courses and return their count.
             unset($options['offset']);
             unset($options['limit']);
@@ -2919,8 +2925,38 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
                         "SEMILLERO DOCENTE" => "Semillero Docente",
                         "ESPECIALIZACIÓN EN CALIDAD" => "Especialización En Calidad",
                         "REGENCIA EN FARMACIA" => "Regencia En Farmacia",
-                        "TECNOLOGIA EN PROMOCIÓN DE LA SALUD Y DESARROLLO SOCIAL" => "Tecnología En Promoción De La Salud Y Desarrollo Social");
+                        "TECNOLOGIA EN PROMOCIÓN DE LA SALUD Y DESARROLLO SOCIAL" => "Tecnología En Promoción De La Salud Y Desarrollo Social",);
         return $names;
+    }
+
+    public function categoriesIdsCountCourses(){
+        $ids = array(
+            "1" => "6",
+            "2" => "109",
+            "3" => "7",
+            "4" => "110",
+            "5" => "76",
+            "6" => "5",
+            "7" => "14",
+            "8" => "51",
+            "9" => "43",
+            "10" => "89",
+            "11" => "30002",
+            "12" => "30005",
+            "13" => "30004",
+            "14" => "30003",
+            "15" => "30006",
+            "16" => "30007",
+            "17" => "30001",
+            "18" => "30009",
+            "19" => "30008",
+            "20" => "69",
+            "21" => "70",
+            "22" => "95",
+            "23" => "113",
+            "24" => "118",
+        );
+        return $ids;
     }
 }
 
