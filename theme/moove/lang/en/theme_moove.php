@@ -254,3 +254,5 @@ $string['forumcustomtemplatedesc'] = 'Enable that in order to use a pretty templ
 $string['coursesections'] = 'Course sections';
 
 $string['viewless'] = 'View less';
+
+$string['pleasesetgroups'] = 'Please create at least one group in this course.';

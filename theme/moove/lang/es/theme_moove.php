@@ -254,3 +254,5 @@ $string['forumsettings'] = 'Foro';
 $string['coursesections'] = 'Secciones de curso';
 
 $string['viewless'] = 'Ver menos';
+
+$string['pleasesetgroups'] = 'Por favor cree al menos un grupo en este curso.';

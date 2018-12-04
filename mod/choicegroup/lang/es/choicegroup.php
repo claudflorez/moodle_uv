@@ -27,3 +27,10 @@ $string['sortgroupsby'] = 'Ordenar grupo por';
 $string['systemdefault_name'] = 'Nombre actual (Predeterminado)';
 $string['createdate'] = 'Fecha de creación de grupo';
 $string['name'] = 'Nombre';
+$string['pleasesetonegroupor'] = 'Por favor, cree al menos un grupo para este curso.<br /><br />
+<ul>
+<li><a href="{$a->linkgroups}">Administrar grupos</a></li>
+<li><a href="{$a->linkcourse}">Retornar al curso</a></li>
+</ul>';
+
+$string['nogroupincourse'] = 'No hay grupos definidos en este curso.';
