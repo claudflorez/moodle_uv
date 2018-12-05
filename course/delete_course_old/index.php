@@ -6,7 +6,6 @@
 	require('../../config.php');
 
 	global $USER;
-
 	require_login();
 	//creamos los encabezados de la tabla
     $table = new html_table();
@@ -111,23 +110,28 @@
 	$PAGE->set_heading(" ");
 	$PAGE->navbar->add("Cursos Antiguos");
 	echo $OUTPUT->header();
-	//$PAGE->requires->js('/course/delete_course_old/css/style.css');
 
-	echo "<div id='myModal' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
-	  <div class='modal-header'>
-		<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
-		<h3 id='myModalLabel'>¡Atención!</h3>
-	  </div>
-	  <div class='modal-body'>
-		<div id='info-teacher-course'></div>
-
-	  </div>
-	  <div class='modal-footer'>
-	<button id='eliminar' class='btn btn-primary'>Añadir</button>
-	<button class='btn btn-default' data-dismiss='modal' aria-hidden='true'>Cancelar</button>
-
-	  </div>
+	echo "
+	<div id='myModal' class='modal hide fade' tabindex='-1' role='dialog' aria-labelledby='myModalLabel' aria-hidden='true'>
+	  	<div class='modal-dialog'>
+    		<div class='modal-content'>
+				<div class='modal-header'>
+					<h4 class='modal-title'>¡Atención!</h4>
+					<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+			  	</div>
+			  	<div class='modal-body'>
+					<div id='info-teacher-course'></div>
+			  	</div>
+			  	<div class='modal-footer'>
+					<button id='eliminar' class='btn btn-primary'>Añadir</button>
+					<button class='btn btn-default' data-dismiss='modal' aria-hidden='true'>Cancelar</button>
+			  	</div>
+			</div>
+		</div>
 	</div>";
+
+
+
 	$message_time="<div class='alert alert-warning'>
   		<h3><span style='color:#D51B23;'>Atención</span>, Solo podrá eliminar aquellos cursos que tengan mas de un año de creación.<br>
   		Si desea eliminar cursos creados hace menos de un año, por favor diligenciar el siguiente <a style='color:#D51B23;' target='blank' href='https://docs.google.com/forms/d/e/1FAIpQLScUqytuNLtZQQTYGY9KnXOzGnYFQ-gJasl1om1SbHTDJ6LQJg/viewform'>formulario</a>.
@@ -139,90 +143,64 @@
 
 		//$PAGE->requires->js_call_amd('theme_crisp/modal','init');
 		
-		$PAGE->requires->js_amd_inline("
-				require(['jquery'], function($) {
-							
-
-
-							$('.eliminar_modal').click(function(){
-									id = $(this).attr('idcourse');
-									boton = $(this);
-									
-									if($(this).attr('action') == 'delete'){
-
-
-
-										$.get( 'count_teacher.php', { id: id }, function( data ) {
-											if (data.total==1) {
-												contenido='El curso será puesto en lista para ser eliminado (los cursos serán eliminados a la 01:00 am de cada día) </br>¿Esta Seguro de añadir el curso a la lista de cursos a eliminar?';
-											$('#info-teacher-course').html(contenido);
-											$('#myModal').modal('show');
-											}
-											else{
-												contenido='<div class=alert alert-error>Cuidado este curso tiene otros profesores</div>';
-												$('#info-teacher-course').html(contenido);
-												for (var i =0; i <=data.profesores.length-1; i++) {
-													$('#info-teacher-course').append('<strong>'+data.profesores[i]+'</strong><br>');
-
-												}
-												$('#info-teacher-course').append('<br>¿Esta Seguro de añadir el curso a la lista de cursos a eliminar?. Recuerde que los cursos serán eliminados a la 01:00 am de cada día.');
-												$('#myModal').modal('show');
-
-											}
-
-
-										}, 'json');
-
-										$('#eliminar').unbind().click(function () {
-												
-												$.post( 'add_list_course_delete.php', { id: id }, function( data ) {
-													if(data='paso'){
-														
-														//cambiar icono
-														$(boton).children('i').removeClass('fa fa-trash');
-														$(boton).children('i').addClass( 'fa fa-check');
-														boton.attr('action','delete_list');
-													}
-													else{
-														alert('error');
-													}
-
-												});
-												$('#myModal').modal('hide');
-												
-												
-										})
-
-									}
-									else{
-											$.post( 'add_list_course_delete.php', { id: id }, function( data ) {
-												
-												if(data='paso'){
-													
-													$('#myModal').modal('hide');
-													//cambiar icono
-													$(boton).children('i').removeClass('fa fa-check');
-													$(boton).children('i').addClass('fa fa-trash');
-													
-													
-													//cambiar funcion a llamar
-													boton.attr('action','delete');
-
-												}
-												else{
-													alert('error');
-												}
-
-											});
-
-									}
+		$PAGE->requires->js_amd_inline(
+			"
+			require(['jquery'], function($) {
+				$('.eliminar_modal').click(function(){
+					id = $(this).attr('idcourse');
+					boton = $(this);
+					if($(this).attr('action') == 'delete'){
+						$.get( 'count_teacher.php', { id: id }, function( data ) {
+							if (data.total==1) {
+									contenido='El curso será puesto en lista para ser eliminado (los cursos serán eliminados a la 01:00 am de cada día) </br>¿Esta Seguro de añadir el curso a la lista de cursos a eliminar?';
+								$('#info-teacher-course').html(contenido);
+								$('#myModal').modal('show');
+							}else{
+								contenido='<div class=alert alert-error>Cuidado este curso tiene otros profesores</div>';
+								$('#info-teacher-course').html(contenido);
+								for (var i =0; i <=data.profesores.length-1; i++) {
+									$('#info-teacher-course').append('<strong>'+data.profesores[i]+'</strong><br>');
+								}
+								$('#info-teacher-course').append('<br>¿Esta Seguro de añadir el curso a la lista de cursos a eliminar?. Recuerde que los cursos serán eliminados a la 01:00 am de cada día.');
+								$('#myModal').appendTo('body').modal('show');
+								//$('#myModal').modal('show');
+							}
+						}, 'json');
+						$('#eliminar').unbind().click(function () {
+							$.post( 'add_list_course_delete.php', { id: id }, function( data ) {
+								if(data='paso'){	
+									//cambiar icono
+									$(boton).children('i').removeClass('fa fa-trash');
+									$(boton).children('i').addClass( 'fa fa-check');
+									boton.attr('action','delete_list');
+								}
+								else{
+									alert('error');
+								}
 							});
+							$('#myModal').modal('hide');
+						})
+					}else{
+						$.post( 'add_list_course_delete.php', { id: id }, function( data ) {
+							if(data='paso'){
+								$('#myModal').modal('hide');
+									//cambiar icono
+									$(boton).children('i').removeClass('fa fa-check');
+									$(boton).children('i').addClass('fa fa-trash');
+													
+									//cambiar funcion a llamar
+									boton.attr('action','delete');
+								}
+							else{
+								alert('error');
+							}
 
+						});
 
+					}
 				});
-		");
-
-				
-
-
+			});
+			"
+		);
 	echo $OUTPUT->footer();
+	

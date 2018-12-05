@@ -1168,9 +1168,14 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         }
 
         $rv = array();
+        $correct_names = $this->correctNames();
         foreach ($sortedids as $id) {
             if (isset($records[$id])) {
                 $rv[$id] = new coursecat($records[$id]);
+                if (array_key_exists($rv[$id]->name, $correct_names)) {
+                    $rv[$id]->name = $correct_names[$rv[$id]->name];
+                }
+
             }
         }
         return $rv;
@@ -1557,7 +1562,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         if (!$this->is_uservisible() || (!$this->id && !$recursive)) {
             return array();
         }
-
+                    
         $coursecatcache = cache::make('core', 'coursecat');
         $cachekey = 'l-'. $this->id. '-'. (!empty($options['recursive']) ? 'r' : '').
                  '-'. serialize($sortfields);
@@ -1565,7 +1570,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
 
         // Check if we have already cached results.
         $ids = $coursecatcache->get($cachekey);
-        if ($ids !== false) {
+        if (!empty($ids)) {
             // We already cached last search result and it did not expire yet.
             $ids = array_slice($ids, $offset, $limit);
             $courses = array();
@@ -1591,6 +1596,12 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         // Retrieve list of courses in category.
         $where = 'c.id <> :siteid';
         $params = array('siteid' => SITEID);
+        //Habilitar el conteo recursivo para las categorías que no se está realizando el conteo
+        $caterory_ids_for_count_courses = $this->categoriesIdsCountCourses();
+        if(in_array($this->id, $caterory_ids_for_count_courses) ) {
+            $recursive = true;
+        }
+
         if ($recursive) {
             if ($this->id) {
                 $context = context_coursecat::instance($this->id);
@@ -1603,7 +1614,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
         }
         // Get list of courses without preloaded coursecontacts because we don't need them for every course.
         $list = $this->get_course_records($where, $params, array_diff_key($options, array('coursecontacts' => 1)), true);
-
+        
         // Sort and cache list.
         self::sort_records($list, $sortfields);
         $coursecatcache->set($cachekey, array_keys($list));
@@ -1641,7 +1652,7 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
     public function get_courses_count($options = array()) {
         $cntcachekey = 'lcnt-'. $this->id. '-'. (!empty($options['recursive']) ? 'r' : '');
         $coursecatcache = cache::make('core', 'coursecat');
-        if (($cnt = $coursecatcache->get($cntcachekey)) === false) {
+        if (($cnt = $coursecatcache->get($cntcachekey)) == false) {
             // Cached value not found. Retrieve ALL courses and return their count.
             unset($options['offset']);
             unset($options['limit']);
@@ -2821,6 +2832,131 @@ class coursecat implements renderable, cacheable_object, IteratorAggregate {
             return false;
         }
         return true;
+    }
+
+    public function correctNames(){
+        $names = array( "HUMANIDADES" => "Humanidades",
+                        "ARTES INTEGRADAS" => "Artes Integradas",
+                        "INST.DE EDUCACION Y PEDAGOGIA" => "Inst. de Educación y Pedagogía",
+                        "CIENCIAS SOCIALES Y ECONOMICAS" => "Ciencias Sociales y Económicas",
+                        "SALUD" => "Salud",
+                        "INGENIERIA" => "Ingeniería",
+                        "CIENCIAS" => "Ciencias",
+                        "OTRAS FACULTADES" => "Otras Facultades",
+                        "CIENCIAS DE LA ADMINISTRACION" => "Ciencias De La Administración",
+                        "CIENCIAS DE LA ADMINISTRACIÓN" => "Ciencias De La Administración",
+                        "INGENIERÍA" => "Ingeniería",
+                        "TRANSVERSALES" => "Transversales",
+                        "SALUD" => "Salud",
+                        "HISTORIA" => "Historia",
+                        "ESCUELA DE ESTUDIOS LITERARIOS" => "Escuela De Estudios Literarios",
+                        "FILOSOFIA" => "Filosofía",
+                        "ESCUELA DE CIENCIAS DEL LENGUAJE Y LITERATURA" => "Escuela de Ciencias Del Lenguaje Y Literatura",
+                        "GEOGRAFIA" => "Geografía",
+                        "ESCUELA DE TRABAJO SOCIAL Y DESARROLLO HUMANO" => "Escuela de Trabajo Social Y Desarrollo Humano",
+                        "ARTES ESCENICAS" => "Artes Escénicas",
+                        "ESTETICA" => "Estética",
+                        "TECNOLOGIA DE LA CONSTRUCCION" => "Tecnología De La Construcción",
+                        "PROYECTOS" => "Proyectos",
+                        "ESCUELA DE MUSICA" => "Escuela De Música",
+                        "ESCUELA DE COMUNICACION SOCIAL" => "Escuela de Comunicación Social",
+                        "DEPARTAMENTO DE ARTES VISUALES Y ESTETICA" => "Departamento De Artes Visuales Y Estética",
+                        "ARTES VISUALES" => "Artes Visuales",
+                        "DISEÑO" => "Diseño",
+                        "AREA EDUCACION EN CIENCIAS SOCIALES Y HUMANAS" => "Área De Educación En Ciencias Sociales Y Humanas",
+                        "AREA EDUCACION FISICA Y DEPORTES" => "Área De Educación Física Y Deportes",
+                        "INSTITUTO DE PSICOLOGIA" => "Instituto De Psicología",
+                        "AREA EDUCACION MATEMATICA" => "Área De Educación Matemática",
+                        "AREA EDUCACION EN CIENCIAS NATURALES" => "Área De educación En Ciencias Naturales",
+                        "DOCTORADO INTERINSTITUCIONAL" => "Doctorado Interinstitucional",
+                        "AREA EDUCACION, DESARROLLO Y COMUNIDAD" => "Área De Educación, Desarrollo Y Comunidad",
+                        "ECONOMIA" => "Economía",
+                        "CIENCIAS SOCIALES" => "Ciencias Sociales",
+                        "PSIQUIATRÍA" => "Psiquiatría",
+                        "PATOLOGIA" => "Patología",
+                        "ESCUELA DE SALUD PUBLICA" => "Escuela De Salud Pública",
+                        "MEDICINA INTERNA" => "Medicina Interna",
+                        "CIENCIAS FISIOLOGICAS" => "Ciencias Fisiológicas",
+                        "MORFOLOGIA" => "Morfología",
+                        "OFICINA EN EDUCACION EN SALUD" => "Oficina En Educación En Salud",
+                        "ESCUELA DE CIENCIAS BASICAS" => "Escuela De Ciencias Básicas",
+                        "ESCUELA DE BACTERIOLOGIA Y LABORATORIO CLINICO" => "Escuela De Bacteriología Y Laboratorio Clínico",
+                        "ESCUELA DE ENFERMERIA" => "Escuela De Enfermería",
+                        "CIRUGIA" => "Cirugía",
+                        "PEDIATRIA" => "Pediatría",
+                        "FISIOCINETICA HUMANA" => "Fisiocinética humana",
+                        "ESCUELA DE ODONTOLOGIA" => "Escuela De Odontología",
+                        "ESCUELA DE MEDICINA" => "Escuela de Medicina",
+                        "ESCUELA DE REHABILITACION HUMANA" => "Escuela De Rehabilitación Humana",
+                        "SALUD FAMILIAR" => "Salud Familiar",
+                        "MICROBIOLOGIA" => "Microbiología",
+                        "ANESTESIOLOGIA" => "Anestesiología",
+                        "MEDICINA FISICA" => "Medicina Física",
+                        "ESTOMATOLOGIA" => "Estomatología",
+                        "PROGRAMA DOCTORADO EN SALUD " => "Programa Doctorado En Salud",
+                        "ESCUELA DE ESTADÍSTICA" => "Escuela De Estadística",
+                        "ESCUELA DE INGENIERIA DE RECURSOS NATURALES Y DEL AMBIENTE" => "Escuela De Ingeniería De Recursos Naturales Y Del Ambiente",
+                        "ESCUELA DE INGENIERÍA CIVIL Y GEOMÁTICA" => "Escuela De Ingeniería Civil Y Geomática",
+                        "ESCUELA DE INGENIERIA ELECTRICA Y ELECTRONICA" => "Escuela De Ingeniería Eléctrica Y Electrónica",
+                        "OFICINA DE EXTENSION Y DE INGENIERIA" => "Oficina De Extención Y De Ingeniería",
+                        "ESCUELA DE INGENIERIA QUIMICA" => "Escuela De Ingeniería Química",
+                        "DEPARTAMENTO DE INGENIERIA DE ALIMENTOS" => "Departamento De Ingeniería De Alimentos",
+                        "ESCUELA DE INGENIERIA MECANICA" => "Escuela De Ingeniería Mecánica",
+                        "ESCUELA DE INGENIERIA DE MATERIALES" => "Escuela De Ingeniería De Materiales",
+                        "ESCUELA DE INGENIERIA INDUSTRIAL Y ESTADISTICA" => "Escuela De Ingeniería Industrial Y Estadística",
+                        "ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION" => "Escuela De Ingeniería De Sistemas Y Computación",
+                        "BIOLOGIA" => "Biología",
+                        "FISICA" => "Física",
+                        "MATEMATICAS" => "Matemáticas",
+                        "QUIMICA" => "Química",
+                        "DIRECCIÓN ESTRATEGIA DE ACOMPAÑAMIENTO ASES" => "Dirección De Estrategia De Acompañamiento ASES",
+                        "DIRECCIÓN DE REGIONALIZACIÓN" => "Dirección De Regionalización",
+                        "Ingenieria" => "Ingeniería",
+                        "POSGRADOS INTERINSTITUCIONALES" => "Postgrados Interinstitucionales",
+                        "DEPARTAMENTO DE ALTOS ESTUDIOS JURIDICOS" => "Departamento De Altos Estudios Jurídicos",
+                        "TODAS LAS FACULTADES" => "Todas Las Facultades",
+                        "PERTENECE AL DEPARTAMENTO 801" => "Pertenece Al Departamento 801",
+                        "Ciencias de la Administracion" => "Ciencias De La Administración",
+                        "CONTABILIDAD Y FINANZAS" => "Contabilidad Y Finanzas",
+                        "DIRECCION Y GESTION ADMINISTRATIVA" => "Dirección Y Gestión Administrativa",
+                        "Psicologia" => "Psicología",
+                        "CENTRO DE LENGUAS Y CULTURAS" => "Centro De Lenguas Y Cultura",
+                        "ADMINISTRATIVO" => "Administrativo",
+                        "SEMILLERO DOCENTE" => "Semillero Docente",
+                        "ESPECIALIZACIÓN EN CALIDAD" => "Especialización En Calidad",
+                        "REGENCIA EN FARMACIA" => "Regencia En Farmacia",
+                        "TECNOLOGIA EN PROMOCIÓN DE LA SALUD Y DESARROLLO SOCIAL" => "Tecnología En Promoción De La Salud Y Desarrollo Social",);
+        return $names;
+    }
+
+    public function categoriesIdsCountCourses(){
+        $ids = array(
+            "1" => "6",
+            "2" => "109",
+            "3" => "7",
+            "4" => "110",
+            "5" => "76",
+            "6" => "5",
+            "7" => "14",
+            "8" => "51",
+            "9" => "43",
+            "10" => "89",
+            "11" => "30002",
+            "12" => "30005",
+            "13" => "30004",
+            "14" => "30003",
+            "15" => "30006",
+            "16" => "30007",
+            "17" => "30001",
+            "18" => "30009",
+            "19" => "30008",
+            "20" => "69",
+            "21" => "70",
+            "22" => "95",
+            "23" => "113",
+            "24" => "118",
+        );
+        return $ids;
     }
 }
 

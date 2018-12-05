@@ -53,7 +53,6 @@
 
     <div id="page" class="container-fluid">
         {{{ output.full_header }}}
-
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
                 {{#hasregionmainsettingsmenu}}
@@ -64,6 +63,7 @@
                 <section id="region-main">
                     <div class="card">
                         <div class="card-body">
+                            {{{ output.page_personalize_buttons }}}
                             {{#hasregionmainsettingsmenu}}
                                 <div class="region_main_settings_menu_proxy"></div>
                             {{/hasregionmainsettingsmenu}}

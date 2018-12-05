@@ -34,7 +34,7 @@
         {{/ output.get_logo }}
             ">
         {{# output.get_logo }}
-            <span class="logo d-none d-sm-inline">
+            <span class="logo d-sm-inline">
                 <img src="{{output.get_logo}}" alt="{{sitename}}">
             </span>
         {{/ output.get_logo }}
@@ -53,13 +53,10 @@
         <div class="d-none d-lg-block">
             {{{ output.search_box }}}
         </div>
-
         <li class="nav-item lang-menu">
             {{{ output.render_lang_menu }}}
         </li>
-
-        {{{ output.navbar_plugin_output }}}
-
-        {{{ output.user_menu }}}
+          {{{ output.navbar_plugin_output }}}
+          {{{ output.user_menu }}}
     </ul>
 </nav>

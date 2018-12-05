@@ -1,38 +1,45 @@
-.messaging-area-container .contacts-area .contacts .contact .information .name{
+.messaging-area-container .contacts-area .contacts .contact 
+.information .name{
   font-size: 0.78rem;
   color: #cd1f32;
 }
 
 
 
-.messaging-area-container .contacts-area .contacts .contact .information .lastmessage{
+.messaging-area-container .contacts-area .contacts .contact 
+.information .lastmessage{
   font-size: 0.75rem;
   color: #373a3c !important;
 }
 
 
-.messaging-area-container .contacts-area .contacts .contact.selected {
+.messaging-area-container .contacts-area .contacts 
+.contact.selected {
   background-color: #cd1f32 !important;
   border-color: #b8daff !important;
 }
 
-.messaging-area-container .contacts-area .contacts .contact.selected .information .name{
+.messaging-area-container .contacts-area .contacts 
+.contact.selected .information .name{
   font-size: 0.78rem;
   color: #fff !important;
 }
 
-.messaging-area-container .contacts-area .contacts .contact.selected .information .lastmessage{
+.messaging-area-container .contacts-area .contacts 
+.contact.selected .information .lastmessage{
   font-size: 0.75rem;
   color: #fff !important;
 }
 
-.messaging-area-container .messaging-area .messages-area .messages-header .name-container .name button{
+.messaging-area-container .messaging-area .messages-area 
+.messages-header .name-container .name button{
   color: #cd1f32 !important;
   font-weight: bold;
   font-size: 1.2rem;
 }
 
-.messaging-area-container .messaging-area .messages-area .messages .message .content.right{
+.messaging-area-container .messaging-area .messages-area 
+.messages .message .content.right{
   background: #ebebeb none repeat scroll 0 0;
   border-radius: 3px;
   color: #2c3f4c !important;
@@ -42,7 +49,8 @@
 
 }
 
-.messaging-area-container .messaging-area .messages-area .messages .message .content.left{
+.messaging-area-container .messaging-area .messages-area 
+.messages .message .content.left{
   background: #eef5f9 none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
@@ -51,19 +59,24 @@
   width: 80%;
 }
 
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container{
+.popover-region-container .popover-region-content-container 
+.popover-region-content .messages .content-item-container{
 padding: 0% !important;
 }
 
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container .content-item-body{
+.popover-region-container .popover-region-content-container 
+.popover-region-content .messages .content-item-container 
+.content-item-body{
 padding: 2%;
 }
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container h3 {
+.popover-region-container .popover-region-content-container 
+.popover-region-content .messages .content-item-container h3 {
 font-size: 0.9rem !important;
 color: #cd1f32;
 }
 
-.popover-region-container .popover-region-content-container .popover-region-content .messages .content-item-container p {
+.popover-region-container .popover-region-content-container 
+.popover-region-content .messages .content-item-container p {
 font-size: 0.75rem;
 color: #373a3c !important;
 }

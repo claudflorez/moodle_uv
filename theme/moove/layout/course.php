@@ -67,17 +67,18 @@ $templatecontext = [
     'draweropenright' => $draweropenright,
     'regionmainsettingsmenu' => $regionmainsettingsmenu,
     'hasregionmainsettingsmenu' => !empty($regionmainsettingsmenu)
-];
+  ];
 
 // Improve boost navigation.
 theme_moove_extend_flat_navigation($PAGE->flatnav);
+
+order_flat_navigation($PAGE->flatnav);
 
 $templatecontext['flatnavigation'] = $PAGE->flatnav;
 
 $themesettings = new \theme_moove\util\theme_settings();
 
 $templatecontext = array_merge($templatecontext, $themesettings->footer_items());
-
 if (!$coursepresentation || $coursepresentation == 1) {
     echo $OUTPUT->render_from_template('theme_moove/columns2', $templatecontext);
 } else if ($coursepresentation == 2) {
