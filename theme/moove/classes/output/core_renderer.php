@@ -800,7 +800,16 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * 
      */
     public function page_personalize_buttons(){
-      $html = html_writer::start_tag('div', array('class' => 'personalize-buttons', 'id' => 'personalize-buttons'));
+      global $CFG;
+      if (strpos($this->page->url, '/admin/user.php') == true) {
+        $html = '<div class="singlebutton">
+                  <form method="GET" action="'.$CFG->wwwroot.'/user/editadvanced.php">
+                    <input type="hidden" name="id" value="-1">
+                    <button type="submit" class="btn btn-secondary" title="">Agregar un usuario</button>
+                  </form>
+                </div>';
+      }
+      $html .= html_writer::start_tag('div', array('class' => 'personalize-buttons', 'id' => 'personalize-buttons'));
       $html .= html_writer::end_tag('div');
       $this->page->requires->js_call_amd('theme_moove/btn_in_course', 'init');
       return $html;
