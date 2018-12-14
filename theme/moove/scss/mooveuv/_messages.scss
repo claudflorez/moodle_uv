@@ -1,3 +1,12 @@
+#page-message-index{
+  #page-content{
+    .card{
+      max-width: 1024px !important;
+      margin: auto !important;
+    }
+  }
+}
+
 .messaging-area-container .contacts-area .contacts .contact 
 .information .name{
   font-size: 0.78rem;
