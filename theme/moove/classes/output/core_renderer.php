@@ -803,7 +803,6 @@ class core_renderer extends \theme_boost\output\core_renderer {
      */
     public function page_personalize_buttons(){
       global $CFG;
-      $html = '';
       if (strpos($this->page->url, '/admin/user.php') == true) {
         $html = '<div class="singlebutton">
                   <form method="GET" action="'.$CFG->wwwroot.'/user/editadvanced.php">
