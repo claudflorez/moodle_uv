@@ -79,6 +79,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
      * @return mixed
      */
     public function render_lang_menu() {
+        $this->page->requires->js_call_amd('theme_moove/control_menus', 'init');
         $langs = get_string_manager()->get_list_of_translations();
         $haslangmenu = $this->lang_menu() != '';
         $menu = new custom_menu;
@@ -726,6 +727,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
     public function mydashboard_user_header(){
       global $CFG;
       $img_path = $CFG->wwwroot . '/theme/moove/pix/dintev/';
+      //$this->page->requires->js_call_amd('theme_moove/control_menus', 'init');
       $html = html_writer::start_tag('header', array('id' => 'page-header', 'class' => 'row'));
       $html .= html_writer::start_tag('div', array('class' => 'col-12 pt-3 pb-3'));
       $html .= html_writer::start_tag('div', array('class' => 'card'));
@@ -739,7 +741,7 @@ class core_renderer extends \theme_boost\output\core_renderer {
       $html .= html_writer::end_tag('div');//Fin de tag div.d-flex
 
       //Bloque para links de dashboard de los usuarios
-      $html .= html_writer::start_tag('div', array('class' => 'row'));
+      $html .= html_writer::start_tag('div', array('class' => 'row', 'id'=>'user-links'));
       //Biblioteca
       $html .= html_writer::start_tag('div', array('class' => 'col-md-3'));
       $html .= html_writer::start_tag('a', array('href' => 'http://biblioteca.univalle.edu.co/', 'target' => '_blank', 'class'=>'btn btn-header-user-uv'));
