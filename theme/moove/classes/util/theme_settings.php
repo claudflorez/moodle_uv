@@ -262,8 +262,8 @@ class theme_settings {
 
         for ($i = 1, $j = 0; $i <= $slider_foursection_count; $i++, $j++) {
             $sliderimage = "slider_foursection_image{$i}";
-            $slider_foursection_title = "slider_foursection_title{$i}";
-            $slider_foursection_cap = "slider_foursection_cap{$i}";
+            $slidertitle = "slider_foursection_title{$i}";
+            $slidercap = "slider_foursection_cap{$i}";
             $imgurl = "slider_foursection_imageurl{$i}";
 
             $templatecontext['slides_foursection'][$j]['key'] = $j;
